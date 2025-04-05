@@ -9,8 +9,10 @@ return new class extends Migration {
         Schema::create('commandes', function (Blueprint $table) {
             $table->id();
             $table->foreignId('id_produit')->constrained('produits')->onDelete('cascade');
+            $table->foreignId('id_panier')->constrained('paniers')->onDelete('cascade');
             $table->integer('quantite');
             $table->decimal('prix_total', 10, 2);
+            $table->text("etat")->default("en attente");
             $table->timestamps();
         });
     }
