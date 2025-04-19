@@ -513,7 +513,7 @@ https://templatemo.com/tm-591-villa-agency
               </div>
             </div>
             <div class="col-lg-6">
-              <div class="item email">
+              <div class="item ">
                 <img src="assets/images/email-icon.png" alt="" style="max-width: 52px;">
                 <h6>info@villa.co<br><span>Business Email</span></h6>
               </div>

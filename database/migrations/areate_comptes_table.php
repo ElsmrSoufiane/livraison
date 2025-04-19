@@ -11,11 +11,12 @@ return new class extends Migration {
             $table->string('nom');
             $table->string('email')->unique();
             $table->string('mot_de_passe');
-            $table->string('adress');
+            $table->string('address'); // <-- corrigé ici
             $table->string('numero');
-            $table->enum('role', ['admin', 'compte', 'livreur']);
+            $table->enum('role', ['admin', 'compte', 'livreur'])->default('livreur');;
             $table->timestamps();
         });
+        
     }
 
     public function down(): void {

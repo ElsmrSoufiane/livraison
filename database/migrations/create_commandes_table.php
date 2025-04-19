@@ -11,6 +11,8 @@ return new class extends Migration {
             $table->foreignId('id_produit')->constrained('produits')->onDelete('cascade');
             $table->foreignId('id_panier')->constrained('paniers')->onDelete('cascade');
             $table->integer('quantite');
+            $table->string('address');
+            $table->integer('numero');
             $table->decimal('prix_total', 10, 2);
             $table->text("etat")->default("en attente");
             $table->timestamps();

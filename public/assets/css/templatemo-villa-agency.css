@@ -18,7 +18,7 @@ Table of contents
 07. testimonials
 08. contact
 09. footer
-
+section pro
 --------------------------------------------- */
 /* 
 ---------------------------------------------
@@ -1235,7 +1235,7 @@ Contact Style
 }
 
 .contact-content {
-  margin-top: -240px;
+  margin-top: 0;
   position: relative;
   z-index: 1;
 }
