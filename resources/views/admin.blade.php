@@ -261,6 +261,8 @@ les meilleurs restaurants et patisseries de fes
                         @endforeach
                     </select>
                 </div>
+                
+                
                 <div class="input-group">
                     <label>Image</label>
                     <input name='image' type="file" accept="image/*">

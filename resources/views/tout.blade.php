@@ -40,30 +40,39 @@
                 <div class="container"> <!-- Open container -->
 
 <div class="row"> <!-- Open row -->
-
+@foreach ($produits as $produit)
+@if($produit->categorie_id == 3)
   <div class="col-lg-4 col-md-6"> <!-- Open column -->
   
     <div class="item"> <!-- Open item -->
 
       <a href="property-details.html">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGavPN1pbxf_7EkHr_uxOvB3GibfeEdMuf3A&s" alt="">
+      <img src="{{ asset('storage/' . $produit->image) }}" alt="Produit">
+
+
+
       </a>
-
-      <span class="category">pharmacie</span>
-
-      <h6>20dhs</h6>
+@foreach($categories as $categorie)
+@if($produit->categorie_id == $categorie->id)
+      <span class="category">{{$categorie->categorie}}</span>
+      @endif
+@endforeach
+      <h6>{{$produit->prix}}dhs</h6>
 
       <h4>
-        <a href="property-details.html">DOLIPRANE adultes 1000 mg 8 comprimés effervescents</a>
+        <a href="property-details.html">{{$produit->nom}}</a>
       </h4>
 
       <div class="main-button">
-        <a href="property-details.html"><i class="fa fa-shopping-cart"></i></a>
+        <a href="/commander/"><i class="fa fa-shopping-cart"></i></a>
       </div> <!-- Close main-button -->
 
     </div> <!-- Close item -->
 
-  </div> <!-- Close column -->
+  </div> 
+  @endif
+  @endforeach
+  <!-- Close column -->
 
 </div> <!-- Close row -->
 
@@ -71,6 +80,7 @@
 </div> <!-- Close properties section -->
 <div class="contact-content">
 <div class="container">
+
 <div class="item " style="margin:10px;width:50%">
                 <img src="icons8-potato-50.png" alt="" style="max-width: 52px;">
                 <h6>fruits et legumes <br><span>Commander tous les fruits et légumes disponibles</span></h6>
@@ -82,29 +92,39 @@
 
 <div class="row"> <!-- Open row -->
 
+@foreach ($produits as $produit)
+
+@if($produit->categorie_id == 4)
   <div class="col-lg-4 col-md-6"> <!-- Open column -->
   
     <div class="item"> <!-- Open item -->
 
       <a href="property-details.html">
-        <img src="https://www.plantes-et-sante.fr/images/istock-155375750.jpg_720_1000_2" alt="">
+      <img src="{{ asset('storage/' . $produit->image) }}" alt="Produit">
+
       </a>
 
-      <span class="category">fruits et legumes</span>
+      @foreach($categories as $categorie)
+@if($produit->categorie_id == $categorie->id)
+      <span class="category">{{$categorie->categorie}}</span>
+      @endif
+@endforeach
 
-      <h6>10dhs pour 1kg</h6>
+      <h6>{{$produit->prix}}dhs pour 1kg</h6>
 
       <h4>
-        <a href="property-details.html">pommes rouges</a>
+        <a href="property-details.html">{{$produit->nom}}</a>
       </h4>
 
       <div class="main-button">
-        <a href="property-details.html"><i class="fa fa-shopping-cart"></i></a>
+        <a href="/commander/1/{{$produit->id}}"><i class="fa fa-shopping-cart"></i></a>
       </div> <!-- Close main-button -->
 
     </div> <!-- Close item -->
 
   </div> <!-- Close column -->
+   @endif
+   @endforeach
 
 </div> <!-- Close row -->
 

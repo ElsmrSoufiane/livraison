@@ -8,6 +8,8 @@ use App\Http\Controllers\authentificationController;
 use App\Http\Controllers\commandecontroller;
 use App\Models\Fournisseur;
 use App\Models\Categorie;
+use App\Models\Produit;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -35,13 +37,17 @@ Route::get('/panier', function () {
     return view('panier');
 });
 Route::get('/', function () {
-    return view('tout');
+    $produits = Produit::all();
+    $categories = Categorie::all();
+    return view('tout',compact('produits','categories'));
 });
 Route::get('/index', function () {
     return view('index');
 });
 Route::get('/places', function () {
-    return view('places');
+    $fournisseurs = Fournisseur::all();
+    $categories = Categorie::all();
+    return view('places',compact('fournisseurs','categories'));
 });Route::get('/place', function () {
     return view('place');
 });Route::get('/inscrire', function () {

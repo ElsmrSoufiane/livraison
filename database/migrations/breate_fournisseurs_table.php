@@ -11,6 +11,8 @@ return new class extends Migration {
             $table->string('nom');
             $table->string('localisation');
             $table->text('description')->nullable();
+           
+
             $table->string('image')->nullable();
             $table->foreignId('id_admin')->constrained('comptes')->onDelete('cascade');
             $table->foreignId('id_categorie')->constrained('categories')->onDelete('cascade');
