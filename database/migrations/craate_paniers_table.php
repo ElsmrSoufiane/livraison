@@ -10,8 +10,7 @@ return new class extends Migration {
             $table->id();
             $table->foreignId('id_client')->constrained('comptes')->onDelete('cascade');
 
-            $table->decimal('prix_total', 10, 2);
-            $table->foreignId('id_livreur')->constrained('comptes')->onDelete('cascade');
+ 
             $table->timestamps();
         });
     }

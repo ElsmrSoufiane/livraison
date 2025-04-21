@@ -29,7 +29,7 @@ les meilleurs restaurants et patisseries de fes
             </div>
         @endif
 
-        <form id="contact-form" action="/commandes_personalise" method="post" enctype="multipart/form-data">
+        <form id="contact-form" action="/commandes_personalise/1" method="post" enctype="multipart/form-data">
             <div class="row">
                 @csrf
 

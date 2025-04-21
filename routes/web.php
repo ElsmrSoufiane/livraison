@@ -72,8 +72,8 @@ Route::post('/produits', [ProduitController::class, 'store'])->name('produits.st
 
 Route::get('/pointdeventes', [PointDeVenteController::class, 'index'])->name('pointdeventes.index');
 Route::post('/pointdeventes', [PointDeVenteController::class, 'store'])->name('pointdeventes.store');
-Route::post('/commandes', [commandecontroller::class, 'store'])->name('commandes.store');
-Route::post('/commandes_personalise', [commandecontroller::class, 'storepersonalise'])->name('commandespersonalise.store');
+Route::post('/commandes/{id_produit}/{id_panier}', [commandecontroller::class, 'store'])->name('commandes.store');
+Route::post('/commandes_personalise/{id_panier}', [commandecontroller::class, 'storepersonalise'])->name('commandespersonalise.store');
 
 
 Route::get("/admin/livreur/edit/{id}", [LivreurController::class, 'edit'])->name('livreur.edit');

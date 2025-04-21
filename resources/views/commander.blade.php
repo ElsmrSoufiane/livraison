@@ -30,7 +30,7 @@ Les meilleurs restaurants et pâtisseries de Fès
             </div>
         @endif
 
-        <form id="contact-form" action="/commandes" method="post">
+        <form id="contact-form" action="/commandes/2/1" method="post">
             @csrf
             <div class="row">
 
