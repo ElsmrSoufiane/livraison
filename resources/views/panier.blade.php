@@ -12,65 +12,43 @@
             <h6>| Vos plats sélectionnés</h6>
             <h2>Récapitulatif de commande</h2>
           </div>
-          
+          @foreach($commandes as $commande)
           <!-- Cart Items -->
           <div class="cart-item">
               <div class="row align-items-center">
                 <div class="col-2">
-                  <img src="assets/images/plat2.jpg" alt="Plat 2" class="img-fluid rounded">
+                  @foreach($produits as $produit)
+                  @if($produit->id == $commande->id_produit)
+                  <img src="{{asset('storage/'.$produit->image)}}"  class="img-fluid rounded">
                 </div>
                 <div class="col-4">
-                  <h5>pizza dinde</h5>
-                  <p>pizza amrani</p>
-                 
+                  <h5>{{$produit->nom}}</h5>
+                  @foreach($fournisseurs as $fournisseur)
+                  @if($fournisseur->id==$produit->fournisseur_id)
+                  <p>{{$fournisseur->nom}}</p>
+                 @endif
+                  @endforeach
                 </div>
                 <div class="col-3">
                   <div class="quantity">
 
-                    <span class="mx-2">2</span>
+                    <span class="mx-2">{{$commande->quantite}}</span>
 
                   </div>
                 </div>
                 <div class="col-2 text-end">
-                  <span class="price">40dhs</span>
+                  <span class="price">{{$commande->prix_total}}dhs</span>
                 </div>
-                <div class="col-1 text-end">
-                  <button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
+                <div class="col-1 text-end"> <a href="/deleteCommande/{{$commande->id}}" >  <button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button></a>
+                
                 </div>
               </div>
             <hr>
-            
-            <div class="cart-item">
-              <div class="row align-items-center">
-                <div class="col-2">
-                  <img src="assets/images/plat2.jpg" alt="Plat 2" class="img-fluid rounded">
-                </div>
-                <div class="col-4">
-                  <h5>tacos poulet</h5>
-                  <p>mr tacos</p> 
-                 
-                </div>
-                <div class="col-3">
-                  <div class="quantity">
+            @endif
+            @endforeach
+            @endforeach
 
-                    <span class="mx-2">2</span>
-
-                  </div>
-                </div>
-                <div class="col-2 text-end">
-                  <span class="price">40dhs</span>
-                </div>
-                <div class="col-1 text-end">
-                  <button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
-                </div>
-              </div>
-            </div>
-            <hr>
-            
-            
-            </div>
-          </div>
-        </div>
+          
         
         
        

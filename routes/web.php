@@ -7,7 +7,9 @@ use App\Http\Controllers\PointDeVenteController;
 use App\Http\Controllers\authentificationController;
 use App\Http\Controllers\commandecontroller;
 use App\Models\Fournisseur;
+use App\Models\Commande;
 use App\Models\Categorie;
+use App\Models\Panier;
 use App\Models\Produit;
 
 /*
@@ -32,9 +34,21 @@ Route::get('/login', function () {
     return view('login');
 });
 
-
+Route::get('/deleteCommande/{id}', function ($id) {
+    $commande = Commande::find($id);
+    if ($commande) {
+        $commande->delete();
+        return redirect()->back()->with('success', 'Commande supprimée avec succès.');
+    }
+    return redirect()->back()->with('error', 'Commande non trouvée.');
+});
 Route::get('/panier', function () {
-    return view('panier');
+    $panier = Panier::where('id_client', auth()->user()->id)->first();
+    $commandes=Commande::where('id_panier', $panier->id)->get();
+  
+    $produits=Produit::all();
+    $fournisseurs = Fournisseur::all();
+    return view('panier',compact('produits','panier','commandes','fournisseurs'));
 });
 Route::get('/', function () {
     $produits = Produit::all();
@@ -48,22 +62,34 @@ Route::get('/places', function () {
     $fournisseurs = Fournisseur::all();
     $categories = Categorie::all();
     return view('places',compact('fournisseurs','categories'));
-});Route::get('/place', function () {
-    return view('place');
-});Route::get('/inscrire', function () {
+});
+Route::get('/place/{id}', function ($id) {
+    $fournisseurs = Fournisseur::all();
+    $fournisseur=Fournisseur::find($id);
+    $produits=Produit::where('fournisseur_id',$id)->get();
+    return view('place',compact('produits','fournisseur','fournisseurs'));
+});
+Route::get('/inscrire', function () {
     return view('inscrire');
 });
 Route::get('/connecter', function () {
     return view('connecter');
 });
 
-Route::get('/commander', function () {
-    return view('commander');
+Route::get('/commander/{id}', function ($id) {
+    $panier = Panier::where('id_client', auth()->user()->id)->first();
+    $produit = Produit::find($id);
+    return view('commander',compact('produit', 'panier'));
 });
 Route::get('/commandepersonelle', function () {
-    return view('commandepers');
-});
+    $panier = Panier::where('id_client', auth()->user()->id)->first();
 
+    return view('commandepers',compact('panier'));
+});
+Route::get("/logout", function () {
+    auth()->logout();
+    return redirect('/')->with('success', 'Vous êtes déconnecté avec succès.');
+})->name('logout');
 Route::get('/admin', function ()
 {
     $fournisseurs = Fournisseur::all();

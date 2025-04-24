@@ -30,35 +30,37 @@ Les meilleurs restaurants et pâtisseries de Fès
             </div>
         @endif
 
-        <form id="contact-form" action="/commandes/2/1" method="post">
+        <form id="contact-form" action="/commandes/{{$produit->id}}/{{$panier->id}}" method="post">
             @csrf
             <div class="row">
 
                 <div class="col-lg-12">
                     <fieldset>
                         <label for="quantite">Quantité</label>
-                        <input type="number" name="quantite" id="quantite" value="{{ old('quantite', 1) }}" min="1" class="form-control">
+                        <input type="number" name="quantite" id="quantite" value=1 min="1" class="form-control">
                     </fieldset>
                 </div>
 
                 <div class="col-lg-12">
                     <fieldset>
                         <label for="total">Total (DH)</label>
-                        <input type="number" value="{{ old('prix_total', 20) }}" name="prix_total" id="total" readonly class="form-control">
+                        <input type="number" value="{{$produit->prix}}" name="prix_total" id="total" readonly class="form-control">
                     </fieldset>
                 </div>
 
                 <div class="col-lg-12">
                     <fieldset>
                         <label for="numero">Numéro</label>
-                        <input type="number" name="numero" id="numero" placeholder="0666666666" value="{{ old('numero') }}" required>
+                        <input type="number" name="numero" id="numero" placeholder="0666666666" value="{{ auth()->user()->numero }}"
+                        required>
                     </fieldset>
                 </div>
 
                 <div class="col-lg-12">
                     <fieldset>
                         <label for="address">Adresse</label>
-                        <input type="text" name="address" id="address" value="{{ old('address') }}" autocomplete="on">
+                        <input type="text" name="address" id="address" value="{{ auth()->user()->address }}"
+                        autocomplete="on">
                     </fieldset>
                 </div>
 
@@ -78,7 +80,7 @@ Les meilleurs restaurants et pâtisseries de Fès
 </div>
 
 <script>
-    const prixUnitaire = 20;
+     const prixUnitaire = {{ $produit->prix }};
     const quantiteInput = document.getElementById("quantite");
     const totalInput = document.getElementById("total");
 

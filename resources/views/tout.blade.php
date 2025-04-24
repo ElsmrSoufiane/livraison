@@ -5,7 +5,14 @@
 @endsection
 @section("content")
 
-
+@auth()
+<div class="container" style="margin-top: 20px;">
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <h2>Bienvenue, {{ Auth::user()->name }}!</h2>
+            <p>Vous êtes connecté en tant que {{ Auth::user()->role }}</p>
+        </div>
+    </div> @endauth
  <div class="section-heading text-center">
             <h6 style="font-size:30px">| Categories</h6>
           
@@ -46,7 +53,7 @@
   
     <div class="item"> <!-- Open item -->
 
-      <a href="property-details.html">
+      <a href="/commander/{{$produit->id}}">
       <img src="{{ asset('storage/' . $produit->image) }}" alt="Produit">
 
 
@@ -64,7 +71,7 @@
       </h4>
 
       <div class="main-button">
-        <a href="/commander/"><i class="fa fa-shopping-cart"></i></a>
+        <a href="/commander/{{$produit->id}}"><i class="fa fa-shopping-cart"></i></a>
       </div> <!-- Close main-button -->
 
     </div> <!-- Close item -->
@@ -99,7 +106,7 @@
   
     <div class="item"> <!-- Open item -->
 
-      <a href="property-details.html">
+      <a href="/commander/{{$produit->id}}">
       <img src="{{ asset('storage/' . $produit->image) }}" alt="Produit">
 
       </a>
@@ -113,11 +120,11 @@
       <h6>{{$produit->prix}}dhs pour 1kg</h6>
 
       <h4>
-        <a href="property-details.html">{{$produit->nom}}</a>
+        <a href="/commander/{{$produit->id}}">{{$produit->nom}}</a>
       </h4>
 
       <div class="main-button">
-        <a href="/commander/1/{{$produit->id}}"><i class="fa fa-shopping-cart"></i></a>
+        <a href="/commander/{{$produit->id}}"><i class="fa fa-shopping-cart"></i></a>
       </div> <!-- Close main-button -->
 
     </div> <!-- Close item -->

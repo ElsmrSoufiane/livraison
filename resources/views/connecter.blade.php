@@ -43,7 +43,7 @@ les meilleurs restaurants et patisseries de fes
                 <div class="col-lg-12">
                     <fieldset>
                         <label for="mot_de_passe">mot de passe</label>
-                        <input type="password" name="mot_de_passe" id="mot_de_passe" autocomplete="on">
+                        <input type="password" name="mot_de_passe" id="mot_de_passe" autocomplete="on" required>
                     </fieldset>
                 </div>
 
@@ -53,7 +53,7 @@ les meilleurs restaurants et patisseries de fes
                             <button type="submit" id="form-submit" class="orange-button">se connecter</button>
                         </center>
                         <br>
-                        <a href="#">s'inscrire</a> 
+                        <a href="/inscrire" class="{{ Request::is('inscrire') ? 'active' : '' }}">s'inscrire</a> 
                     </fieldset>
                 </div>
             </div>

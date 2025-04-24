@@ -12,8 +12,23 @@
                     <li><a href="/" class="{{ Request::is('/') ? 'active' : '' }}">Principale</a></li>
 <li><a href="/places" class="{{ Request::is('places') ? 'active' : '' }}">Places</a></li>
 <li><a href="/commandepersonelle" class="{{ Request::is('commandepersonelle') ? 'active' : '' }}">+Commandes personnalisées</a></li>
+@guest()
 <li><a href="/connecter" class="{{ Request::is('connecter') ? 'active' : '' }}">Connecter</a></li>
 <li><a href="/inscrire" class="{{ Request::is('inscrire') ? 'active' : '' }}"><i class="fa fa-user"></i> Inscrire</a></li>
+@endguest
+@auth()
+@if(auth()->user()->role == 'admin')
+<li><a href="/admin" class="{{ Request::is('admin') ? 'active' : '' }}"><i class="fa fa-user"></i> coté admin</a></li>
+<li><a href="/logout" class=""><i class="fa fa-user"></i>déconnecter</a></li>
+@endif
+@if(auth()->user()->role == 'compte')
+<li><a href="/panier" class="{{ Request::is('panier') ? 'active' : '' }}"><i class="fa fa-shopping-cart"></i>
+panier</a></li>
+
+<li><a href="/logout" class=""><i class="fa fa-user"></i>déconnecter</a></li>
+@endif
+@endauth
+<li></li>
 
                   </ul>   <a class='menu-trigger'>
                         <span>Menu</span>

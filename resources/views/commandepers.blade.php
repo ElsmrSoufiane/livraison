@@ -29,21 +29,23 @@ les meilleurs restaurants et patisseries de fes
             </div>
         @endif
 
-        <form id="contact-form" action="/commandes_personalise/1" method="post" enctype="multipart/form-data">
+        <form id="contact-form" action="/commandes_personalise/{{$panier->id}}" method="post" enctype="multipart/form-data">
             <div class="row">
                 @csrf
 
                 <div class="col-lg-12">
                     <fieldset>
                         <label for="numero">Numéro</label>
-                        <input type="number" name="numero" id="numero" placeholder="0666666666" value="{{ old('numero') }}" required>
+                        <input type="number" name="numero" id="numero" placeholder="0666666666" value="{{ auth()->user()->numero }}"
+                        required>
                     </fieldset>
                 </div>
 
                 <div class="col-lg-12">
                     <fieldset>
                         <label for="address">Adresse</label>
-                        <input type="text" name="address" id="address" value="{{ old('address') }}" autocomplete="on">
+                        <input type="text" name="address" id="address" value="{{ auth()->user()->address }}"
+                        autocomplete="on">
                     </fieldset>
                 </div>
 
@@ -57,7 +59,7 @@ les meilleurs restaurants et patisseries de fes
                 <div class="col-lg-12">
                     <fieldset>
                         <label for="description">Description du produit</label>
-                        <textarea name="description" id="description">{{ old('description') }}</textarea>
+                        <textarea name="description" id="description"></textarea>
                     </fieldset>
                 </div>
 

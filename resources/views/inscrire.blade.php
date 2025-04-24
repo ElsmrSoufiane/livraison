@@ -49,6 +49,13 @@ les meilleurs restaurants et patisseries de fes
 
                 <div class="col-lg-12">
                     <fieldset>
+                        <label for="numero">Email</label>
+                        <input type="email" name="email" id="email" placeholder="Email@gmail.com" value="{{ old('email') }}" required>
+                    </fieldset>
+                </div>
+
+                <div class="col-lg-12">
+                    <fieldset>
                         <label for="address">adresse</label>
                         <input type="text" name="address" id="address" value="{{ old('address') }}" autocomplete="on">
                     </fieldset>
