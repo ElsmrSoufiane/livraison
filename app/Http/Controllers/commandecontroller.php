@@ -16,8 +16,7 @@ class commandecontroller extends Controller
             'address' => 'required|string|max:255',
             'numero' => 'required|string|max:15',
         ]);
-        $id_produit=1;
-        $id_panier=1;
+    
 Commande::create([
 'id_produit'=>$id_produit,
 'id_panier'=>$request->id_panier,

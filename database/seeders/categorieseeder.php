@@ -13,10 +13,14 @@ class categorieseeder extends Seeder
     public function run(): void
     {
         $categories = [
-            ['categorie' => 'restaurants'],
-            ['categorie' => 'patisserie'],
-            ['categorie' => 'pharmacie'],
-            ['categorie' => 'legumes et fruits'],
+            ['categorie' => 'Ordinateurs portables'],
+            ['categorie' => 'Accessoires PC'],
+            ['categorie' => 'Composants PC'],
+            ['categorie' => 'Périphériques'],
+            ['categorie' => 'Réseaux & Internet'],
+            ['categorie' => 'Stockage'],
+            ['categorie' => 'Support & câblage'],
+            ['categorie' => 'Gaming'],
         
         ];
 

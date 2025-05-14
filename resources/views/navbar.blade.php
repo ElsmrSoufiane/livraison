@@ -4,8 +4,8 @@
             <div class="col-12">
                 <nav class="main-nav">
                     <!-- Logo -->
-                    <a href="index.html" class="logo">
-                        <h1>Livraison</h1>
+                    <a  class="logo" >
+                        <h1 >fassitech</h1>
                     </a>
                     <!-- Menu -->
                     <ul class="nav">

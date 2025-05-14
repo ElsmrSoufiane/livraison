@@ -69,8 +69,9 @@ Route::get('/login', function () {
 
 Route::get('/', function () {
     $produits = Produit::all();
+    $fournisseurs=Fournisseur::all();;
     $categories = Categorie::all();
-    return view('tout',compact('produits','categories'));
+    return view('tout',compact('produits','categories','fournisseurs'));
 });
 Route::get('/index', function () {
     return view('index');
@@ -92,9 +93,18 @@ Route::get('/places', function () {
 });
 Route::get('/place/{id}', function ($id) {
     $fournisseurs = Fournisseur::all();
+    $categories=Categorie::all();
     $fournisseur=Fournisseur::find($id);
     $produits=Produit::where('fournisseur_id',$id)->get();
-    return view('place',compact('produits','fournisseur','fournisseurs'));
+    return view('place',compact('produits','fournisseur','fournisseurs','categories'));
+});
+Route::get('/categorie/{id}', function ($id) {
+   
+    $categorie=Categorie::find($id);
+$categoriee=$categorie->categorie;
+    $fournisseurs=Fournisseur::all();
+    $produits=Produit::where("categorie_id",$id)->get();
+    return view('categorie',compact('produits','fournisseurs','categoriee'));
 });
 Route::get('/inscrire', function () {
     return view('inscrire');

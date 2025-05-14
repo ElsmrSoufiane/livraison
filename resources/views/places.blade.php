@@ -96,13 +96,7 @@ Les meilleurs restaurants et pâtisseries de Fès
 </style>
 
 <div class="container py-5">
-    <div class="text-center mb-5">
-        <select id="categoryFilter" class="filter-select">
-            <option value="all">Tous les établissements 🏡</option>
-            <option value="restaurant">Restaurants 🍴</option>
-            <option value="patisserie">Pâtisseries 🍰</option>
-        </select>
-    </div>
+   
 
     <div class="row g-4">
         @foreach ($fournisseurs as $fournisseur)
@@ -110,9 +104,7 @@ Les meilleurs restaurants et pâtisseries de Fès
                 <div class="col-lg-4 col-md-6 item-box {{ $fournisseur->id_categorie == 1 ? 'restaurant' : 'patisserie' }}">
                     <div class="card h-100">
                         <div class="position-relative">
-                            <span class="category-badge">
-                                {{ $fournisseur->id_categorie == 1 ? '🍴 Restaurant' : '🎂 Pâtisserie' }}
-                            </span>
+                        
                             <img src="{{ asset('storage/' . $fournisseur->image) }}" 
                                  class="card-img-top" 
                                  alt="{{$fournisseur->nom}}"
@@ -145,16 +137,5 @@ Les meilleurs restaurants et pâtisseries de Fès
     </div>
 </div>
 
-<script>
-document.getElementById('categoryFilter').addEventListener('change', function() {
-    const category = this.value;
-    const items = document.querySelectorAll('.item-box');
-    
-    items.forEach(item => {
-        item.style.display = (category === 'all' || item.classList.contains(category)) 
-            ? 'block' 
-            : 'none';
-    });
-});
-</script>
+
 @endsection

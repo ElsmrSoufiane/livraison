@@ -32,6 +32,11 @@ mr tacos
                 <div class="container"> <!-- Open container -->
 
 <div class="row"> <!-- Open row -->
+  @if($produits->count() == 0)
+  <div class="col-lg-12 col-md-12 alert-secondary">
+    <h2 style="text-align: center;">Aucun produit trouvé</h2>
+    </div>
+  @endif
 @foreach($produits as $produit)
   <div class="col-lg-4 col-md-6"> <!-- Open column -->
   
@@ -42,8 +47,11 @@ mr tacos
        
       </a>
 
-    
-
+      @foreach($categories as $categorie)
+@if($produit->categorie_id == $categorie->id)
+      <span class="category">{{$categorie->categorie}}</span>
+      @endif
+@endforeach
       <h6>{{$produit->prix}}dhs</h6>
 
       <h4>
