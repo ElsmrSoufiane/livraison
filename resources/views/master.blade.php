@@ -57,7 +57,44 @@
     </style>
   </head>
   <body>
+ <!-- Add Font Awesome for WhatsApp icon -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
+<style>
+    .whatsapp-btn {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        background: #25D366; /* WhatsApp green */
+        color: white;
+        padding: 15px 25px;
+        border-radius: 50px;
+        font-size: 18px;
+        font-weight: bold;
+        text-decoration: none;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        z-index: 1000;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        transition: all 0.3s ease;
+    }
+
+    .whatsapp-btn:hover {
+        background: #128C7E; /* Darker green on hover */
+        transform: scale(1.05);
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .whatsapp-btn i {
+        font-size: 24px;
+    }
+</style>
+
+<!-- Replace PHONE_NUMBER with your actual number (include country code, e.g., +1234567890) -->
+<a href="0766548709" class="whatsapp-btn" target="_blank">
+    <i class="fab fa-whatsapp"></i> commander sur WhatsApp
+</a>
     <!-- ***** Preloader Start ***** -->
     <div id="js-preloader" class="js-preloader">
       <div class="preloader-inner">
@@ -76,8 +113,8 @@
         <div class="row">
           <div class="col-lg-8 col-md-8">
             <ul class="info">
-              <li><i class="fa fa-envelope"></i> info@company.com</li>
-              <li><i class="fa fa-map"></i> Sunny Isles Beach, FL 33160</li>
+              <li><i class="fa fa-envelope"></i> fassiLivraison@gmail.com</li>
+
             </ul>
           </div>
           <div class="col-lg-4 col-md-4">

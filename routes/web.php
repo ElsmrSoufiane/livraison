@@ -15,7 +15,9 @@ use App\Models\Like;
 use App\http\Middleware\md; 
 use Illuminate\Support\Facades\Auth;
 use App\Models\Compte;
-
+use App\Models\Commentaire;
+use App\Models\Star_rating;
+use Illuminate\Http\Request;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -28,9 +30,23 @@ use App\Models\Compte;
 */
 
 
-Route::get('/categorie', function () {
-    return view('categorie');
+Route::post('/categorie', function (Request $request) {
+     $category = $request->input('category');
+return redirect()->route('categorie', ['id' => $category ]);
+
 });
+Route::post('/search', function (Request $request) {
+     $search = $request->input('search');
+      
+return redirect()->route('prds', ['search' => $search ]);
+
+});
+Route::get('/prds/{search}', function ($search) {
+    $produits = Produit::where('nom', 'like', '%' . $search . '%')->get();
+    $fournisseurs = Fournisseur::all();
+    $categories = Categorie::all();
+    return view('produits', compact('produits', 'fournisseurs', 'categories'));
+})->name('prds');
 Route::middleware('md:livreur')->group(function (){
     Route::get("/demarer/{id_livreur}/{commande}", function ($id_livreur, $commande) {
         $commande=Commande::find($commande);
@@ -105,7 +121,7 @@ $categoriee=$categorie->categorie;
     $fournisseurs=Fournisseur::all();
     $produits=Produit::where("categorie_id",$id)->get();
     return view('categorie',compact('produits','fournisseurs','categoriee'));
-});
+})->name('categorie');
 Route::get('/inscrire', function () {
     return view('inscrire');
 });
@@ -119,6 +135,22 @@ Route::get("/logout", function () {
     return redirect('/')->with('success', 'Vous êtes déconnecté avec succès.');
 })->name('logout');
  Route::middleware("md:admin")->group(function () {
+    Route::post("/commentaire/{id}",function(Request $request, $id){
+        dd($request);
+        dd($id);
+    $request->validate([
+        'commentaire' => 'required|string|max:255',
+        'produit_id' => 'required|exists:produits,id',
+    ]);
+    $commentaire = new Commentaire();
+    $commentaire->produit_id = $id;
+    $commentaire->compte_id = auth()->user()->id;
+    $commentaire->commentaire = $request->input('commentaire');
+    $commentaire->save();
+    
+    return redirect()->back()->with('success', 'Commentaire ajouté avec succès.');
+
+})->name("commentaire.store");
     Route::get('/suprimercommande/{id}', function ($id) {
         $commande = Commande::find($id);
         if ($commande) {
@@ -185,6 +217,53 @@ Route::post('/connecter', [authentificationController::class, 'login'])->name('l
 Route::post('/registrer', [authentificationController::class, 'registrer'])->name('registrer.store');
 
 Route::middleware('md:compte')->group(function () {
+    Route::get("/comm/{id}",function($id){ 
+        $produit=Produit::find($id);
+        $commentaires=Commentaire::where('produit_id',$id)->get();
+$averageNote = Star_rating::where('produit_id', $id)->avg('note');
+        $comptes = Compte::all();
+
+      
+        return view("commentaires",compact('produit','commentaires','comptes','averageNote'));
+    });
+        
+       Route::post("/commentaire/{id}",function(Request $request, $id){
+    $request->validate([
+        'commentaire' => 'required|string|max:255',
+        'produit_id' => 'required|exists:produits,id',
+    ]);
+    $commentaire = new Commentaire();
+    $commentaire->produit_id = $id;
+    $commentaire->compte_id = auth()->user()->id;
+    $commentaire->commentaire = $request->input('commentaire');
+    $commentaire->save();
+    
+    return redirect()->back()->with('success', 'Commentaire ajouté avec succès.');
+
+})->name("commentaire.store");
+Route::post("/star_rating/{id}",function(Request $request, $id){
+    $request->validate([
+   
+        'produit_id' => 'required|exists:produits,id',
+    ]);
+    $star = new Star_rating();
+    $star->produit_id = $id;
+    $star->compte_id = auth()->user()->id;
+    $star->note = $request->input('note');
+    try {
+    $star->save();
+} catch (\Illuminate\Database\QueryException $e) {
+    // Check if it's a duplicate entry error (code 23000)
+    if ($e->getCode() == 23000) {
+        return redirect()->back()->with('error', 'Vous avez déjà noté ce produit.');
+    }
+    throw $e; // Re-throw if it's not a duplicate entry error
+}
+    
+    
+    return redirect()->back()->with('success', 'rating ajouté avec succès.');
+
+})->name("star_rating");
     Route::get("/unlike/{id_client}/{fournisseur}", function ($id_client, $fournisseur) {
         $like = Like::where('id_client', $id_client)->where('id_fournisseur', $fournisseur)->first();
         if ($like) {
@@ -232,3 +311,6 @@ Route::get('/panier', function () {
 });
  });
     
+Route::get("/c",function(){
+    return view("commentaires");
+});

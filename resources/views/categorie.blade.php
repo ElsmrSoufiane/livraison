@@ -211,6 +211,7 @@
       <div class="main-button">
         <a href="/commander/{{$produit->id}}"><i class="fa fa-shopping-cart"></i></a>
       </div> <!-- Close main-button -->
+      @include("review");
 
     </div> <!-- Close item -->
 

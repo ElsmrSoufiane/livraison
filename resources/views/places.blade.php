@@ -4,6 +4,20 @@ Les meilleurs restaurants et pâtisseries de Fès
 @endsection
 
 @section("content")
+@if(session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif
+@if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
 <style>
     :root {
         --primary-color: #FF6B35; /* Orange vif */
@@ -100,8 +114,8 @@ Les meilleurs restaurants et pâtisseries de Fès
 
     <div class="row g-4">
         @foreach ($fournisseurs as $fournisseur)
-            @if($fournisseur->id_categorie == 1 || $fournisseur->id_categorie == 2)
-                <div class="col-lg-4 col-md-6 item-box {{ $fournisseur->id_categorie == 1 ? 'restaurant' : 'patisserie' }}">
+
+                <div class="col-lg-4 col-md-6 item-box ">
                     <div class="card h-100">
                         <div class="position-relative">
                         
@@ -132,7 +146,7 @@ Les meilleurs restaurants et pâtisseries de Fès
                         </div>
                     </div>
                 </div>
-            @endif
+        
         @endforeach
     </div>
 </div>

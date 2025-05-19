@@ -1,9 +1,23 @@
 @extends("master")
 @section("title")
-mr tacos
+{{$fournisseur->nom}}
 @endsection
 
 @section("content")
+@if(session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif
+@if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
 <style>
    li a{
         color:black;
@@ -61,6 +75,7 @@ mr tacos
       <div class="main-button">
         <a href="/commander/{{$produit->id}}"><i class="fa fa-shopping-cart"></i></a>
       </div> <!-- Close main-button -->
+      @include("review")
 
     </div> <!-- Close item -->
 
