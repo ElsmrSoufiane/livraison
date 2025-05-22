@@ -92,7 +92,7 @@
 </style>
 
 <!-- Replace PHONE_NUMBER with your actual number (include country code, e.g., +1234567890) -->
-<a href="0766548709" class="whatsapp-btn" target="_blank">
+<a href="https://wa.me/0766548709" class="whatsapp-btn" target="_blank">
     <i class="fab fa-whatsapp"></i> commander sur WhatsApp
 </a>
     <!-- ***** Preloader Start ***** -->

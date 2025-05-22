@@ -1,3 +1,4 @@
+
 <header class="header-area header-sticky">
     <div class="container">
         <div class="row">
@@ -5,13 +6,13 @@
                 <nav class="main-nav">
                     <!-- Logo -->
                     <a  class="logo" >
-                        <h1 >fassiLivraison</h1>
+                        <h1 >NTS5RLIK</h1>
                     </a>
                     <!-- Menu -->
                     <ul class="nav">
                     <li><a href="/" class="{{ Request::is('/') ? 'active' : '' }}">Principale</a></li>
 <li><a href="/places" class="{{ Request::is('places') ? 'active' : '' }}">Places</a></li>
-<li><a href="/commandepersonelle" class="{{ Request::is('commandepersonelle') ? 'active' : '' }}">+Commandes personnalisées</a></li>
+<li> <div></div> </li>
 @guest()
 <li><a href="/connecter" class="{{ Request::is('connecter') ? 'active' : '' }}">Connecter</a></li>
 <li><a href="/inscrire" class="{{ Request::is('inscrire') ? 'active' : '' }}"><i class="fa fa-user"></i> Inscrire</a></li>

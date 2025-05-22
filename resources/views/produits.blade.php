@@ -242,13 +242,7 @@
             </ul>
         </div>
     @endif
- <section class="category-section">
-    <div class="container">
-        <div class="category-header">
-            <h2>chercher votre produit</h2>
-
-        </div>
-  </section>
+ 
   <br>
 <!-- Wrapper with Flexbox layout -->
 <div class="search-filter-container" style="display: flex; gap: 1rem; flex-wrap: wrap; align-items: center;">

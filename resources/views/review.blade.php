@@ -54,11 +54,7 @@
             </div>
         </form>
         <br>
-      <center>  <a href="/comm/{{$produit->id}}" style="padding: 8px 15px; background-color: #ff8c00; color: white; 
-                        border: none; border-radius: 4px; cursor: pointer;">
-                        voir tout les commentaires
-    </a>
-</center>
+    
     </div>
 </div>
 

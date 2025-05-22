@@ -6,7 +6,7 @@ Les meilleurs restaurants et pâtisseries de Fès
 
 @section("content")
 <div class="section-heading text-center">
-    <h6 style="font-size:30px">| Pizza viande taille XL</h6>
+    <h6 style="font-size:30px">| {{$produit->nom}} </h6>
 </div>
 
 <div class="contact-content">
