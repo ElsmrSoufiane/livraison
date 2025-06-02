@@ -6,10 +6,11 @@ gestions des points de vente
 @section("content")
 <style>
         :root {
-            --primary: #2A2F4F;
-            --secondary: #bb7d00;
-            --accent:  #d47d63f3;
-            --background:  #f4bd66f3;
+              --primary:rgb(247, 121, 37);
+        --primary-dark:rgb(197, 4, 4);
+        --accent:rgb(247, 125, 37);
+        --light: #f8f9fa;
+            --background: #f0f0f0;
         }
         #f35525
         * {
@@ -114,9 +115,9 @@ gestions des points de vente
 
         .btn {
             background: var(--secondary);
-            color: white;
+            color: black;
             padding: 12px 30px;
-            border: none;
+            border: var(--primary) 1px solid;
             border-radius: 8px;
             cursor: pointer;
             transition: 0.3s;
@@ -125,6 +126,7 @@ gestions des points de vente
 
         .btn:hover {
             background: var(--primary);
+            color: white;
         }
 
         /* Table Styles */

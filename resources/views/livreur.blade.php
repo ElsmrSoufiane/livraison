@@ -5,11 +5,13 @@ les meilleurs restaurants et patisseries de fes
 
 @section("content")
 <style>
-        :root {
-            --primary: #2A2F4F;
-            --secondary: #917FB3;
-            --accent: #f8a41c;
-            --background: #d28100;
+         :root {
+              --primary:rgb(247, 121, 37);
+              --secondary:rgb(247, 121, 37);
+        --primary-dark:rgb(197, 4, 4);
+        --accent:rgb(247, 125, 37);
+        --light: #f8f9fa;
+            --background: #f0f0f0;
         }
 
         * {
@@ -97,7 +99,7 @@ les meilleurs restaurants et patisseries de fes
 
         .status-badge {
             background: var(--accent);
-            color: var(--primary);
+            color: white;
             padding: 5px 15px;
             border-radius: 20px;
             font-size: 0.9em;

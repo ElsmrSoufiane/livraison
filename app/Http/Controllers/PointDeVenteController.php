@@ -33,7 +33,7 @@ class PointDeVenteController extends Controller
         // 📷 Gestion de l’image si présente
         $imagePath = null;
         if ($request->hasFile('image')) {
-            $imagePath = $request->file('image')->store('fournisseurs', 'public');
+            $imagePath = $request->image->store('fournisseurs', 'public');
         }
 
         // 🔍 On récupère l'ID de l'admin et de la catégorie

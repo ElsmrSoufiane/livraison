@@ -1,37 +1,33 @@
 @auth
-<div style="margin: 20px 0;">
+<div class="feedback-container" style="margin: 3rem 0;">
     <!-- Toggle Button -->
- <center>   <button id="feedbackToggleBtn" 
-            style="background-color: #ff8c00; color: white; border: none; padding: 10px 20px; 
-                   border-radius: 5px; cursor: pointer; font-weight: bold;"
-            onclick="toggleFeedbackForms()">
-        ⊕ Laisser un avis
-    </button>  <br> <br>
-    <a href="/comm/{{$produit->id}}" style="padding: 8px 15px; background-color: #ff8c00; color: white; 
-                        border: none; border-radius: 4px; cursor: pointer;">
-                        voir les informations
-    </a>
-</center>
+    <div class="text-center">
+        <button id="feedbackToggleBtn" 
+                class="feedback-toggle-btn"
+                onclick="toggleFeedbackForms()">
+            ⊕ Laisser un avis
+        </button>
+        <br><br>
+        <a href="/comm/{{$produit->id}}" class="product-info-btn">
+            Voir les informations du produit
+        </a>
+    </div>
 
     <!-- Forms Container (hidden by default) -->
-    <div id="feedbackForms" style="display: none; max-width: 500px; margin-top: 15px; 
-                border: 1px solid #ffd8b2; padding: 20px; border-radius: 8px; background-color: #fff8f0;">
-        
+    <div id="feedbackForms" class="feedback-forms-container">
         <!-- Star Rating Form -->
-        <form method="POST" action="{{route('star_rating',$produit->id)}}" style="margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px dashed #ffd8b2;">
+        <form method="POST" action="{{route('star_rating',$produit->id)}}" class="rating-form">
             @csrf
             <input type="hidden" name="produit_id" value="{{ $produit->id }}">
-            <div style="margin-bottom: 15px;">
-                <label for="note" style="display: block; margin-bottom: 8px; font-weight: 600; color: #e67300;">Donnez une note :</label>
-                <div style="display: flex; align-items: center; gap: 10px;">
-                    <select name="note" id="note" style="width: 100px; padding: 8px; border: 1px solid #ffb366; 
-                            border-radius: 4px; background-color: white; color: #e67300;">
+            <div class="form-group">
+                <label for="note">Donnez une note :</label>
+                <div class="rating-controls">
+                    <select name="note" id="note" class="rating-select">
                         @for($i = 1; $i <= 5; $i++)
                             <option value="{{ $i }}">{{ str_repeat('★', $i) }}{{ $i < 5 ? str_repeat('☆', 5 - $i) : '' }}</option>
                         @endfor
                     </select>
-                    <button type="submit" style="padding: 8px 15px; background-color: #ff8c00; color: white; 
-                            border: none; border-radius: 4px; cursor: pointer;">
+                    <button type="submit" class="submit-btn">
                         Noter
                     </button>
                 </div>
@@ -39,24 +35,152 @@
         </form>
 
         <!-- Comment Form -->
-        <form method="POST"  action='{{ route("commentaire.store",$produit->id) }}'>
+        <form method="POST" action='{{ route("commentaire.store",$produit->id) }}' class="comment-form">
             @csrf
             <input type="hidden" name="produit_id" value="{{ $produit->id }}">
-            <div>
-                <label style="display: block; margin-bottom: 8px; font-weight: 600; color: #e67300;">Laissez un commentaire :</label>
+            <div class="form-group">
+                <label>Laissez un commentaire :</label>
                 <textarea name="commentaire" rows="3" placeholder="Votre commentaire..." required
-                    style="width: 100%; padding: 10px; border: 1px solid #ffb366; border-radius: 4px; 
-                           margin-bottom: 10px; min-height: 80px;"></textarea>
-                <button type="submit" style="padding: 8px 15px; background-color: #ff8c00; color: white; 
-                        border: none; border-radius: 4px; cursor: pointer;">
+                    class="comment-textarea"></textarea>
+                <button type="submit" class="submit-btn">
                     Publier
                 </button>
             </div>
         </form>
-        <br>
-    
     </div>
 </div>
+
+<style>
+    /* Feedback Component Styles */
+    .feedback-toggle-btn {
+        background-color: var(--primary-color);
+        color: white;
+        border: none;
+        padding: 12px 24px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: 600;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 12px rgba(252, 127, 9, 0.2);
+    }
+    
+    .feedback-toggle-btn:hover {
+        background-color: #e67300;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 16px rgba(252, 127, 9, 0.3);
+    }
+    
+    .product-info-btn {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: var(--primary-color);
+        color: white;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: 500;
+        transition: all 0.3s ease;
+    }
+    
+    .product-info-btn:hover {
+        background-color: #e67300;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(252, 127, 9, 0.2);
+    }
+    
+    .feedback-forms-container {
+        display: none;
+        max-width: 600px;
+        margin: 1.5rem auto 0;
+        padding: 2rem;
+        border-radius: 12px;
+        background-color: white;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    }
+    
+    .rating-form {
+        margin-bottom: 2rem;
+        padding-bottom: 2rem;
+        border-bottom: 1px dashed var(--border-color);
+    }
+    
+    .form-group {
+        margin-bottom: 1.5rem;
+    }
+    
+    .form-group label {
+        display: block;
+        margin-bottom: 0.75rem;
+        font-weight: 600;
+        color: var(--dark-color);
+    }
+    
+    .rating-controls {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+    
+    .rating-select {
+        width: 120px;
+        padding: 0.75rem;
+        border: 1px solid var(--border-color);
+        border-radius: 8px;
+        background-color: white;
+        color: var(--dark-color);
+        font-weight: 500;
+    }
+    
+    .comment-textarea {
+        width: 100%;
+        padding: 1rem;
+        border: 1px solid var(--border-color);
+        border-radius: 8px;
+        margin-bottom: 1rem;
+        min-height: 120px;
+        resize: vertical;
+        transition: all 0.3s ease;
+    }
+    
+    .comment-textarea:focus {
+        outline: none;
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 3px rgba(252, 127, 9, 0.2);
+    }
+    
+    .submit-btn {
+        padding: 0.75rem 1.5rem;
+        background-color: var(--primary-color);
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: 500;
+        transition: all 0.3s ease;
+    }
+    
+    .submit-btn:hover {
+        background-color: #e67300;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(252, 127, 9, 0.2);
+    }
+    
+    @media (max-width: 768px) {
+        .feedback-forms-container {
+            padding: 1.5rem;
+        }
+        
+        .rating-controls {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+        
+        .rating-select {
+            width: 100%;
+        }
+    }
+</style>
 
 <script>
     function toggleFeedbackForms() {
@@ -65,29 +189,13 @@
         
         if (forms.style.display === 'none') {
             forms.style.display = 'block';
-            btn.innerHTML = '⊖ Masquer';
+            btn.innerHTML = '⊖ Masquer le formulaire';
             btn.style.backgroundColor = '#e67300';
         } else {
             forms.style.display = 'none';
             btn.innerHTML = '⊕ Laisser un avis';
-            btn.style.backgroundColor = '#ff8c00';
+            btn.style.backgroundColor = 'var(--primary-color)';
         }
     }
 </script>
-
-<style>
-    #feedbackToggleBtn:hover {
-        background-color: #e67300 !important;
-    }
-    
-    button[type="submit"]:hover {
-        background-color: #e67300;
-    }
-    
-    textarea:focus, select:focus {
-        outline: none;
-        border-color: #ff8c00 !important;
-        box-shadow: 0 0 0 2px rgba(255,140,0,0.2);
-    }
-</style>
 @endauth

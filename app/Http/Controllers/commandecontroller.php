@@ -2,28 +2,54 @@
 
 namespace App\Http\Controllers;
 use App\Models\Commande;
+use App\Models\Produit;
 use App\Models\Commande_personalise;
 use Illuminate\Http\Request;
 
 class commandecontroller extends Controller
 {
+    public function addquantite($id_commande)
+    {
+            $commande = Commande::find($id_commande);
+            
+        $produit=Produit::find($commande->id_produit);
+        $commande->quantite += 1;
+        $commande->prix_total = $commande->quantite * $produit->prix;
+        $commande->save();
+
+        return redirect()->back()->with('success', 'Quantité mise à jour avec succès.');
+
+    }
+    public function moinquantite($id_commande)
+    {
+        $commande = Commande::find($id_commande);
+            if($commande->quantite != 1) {
+
+        $produit=Produit::find($commande->id_produit);
+        $commande->quantite -= 1;
+        $commande->prix_total = $commande->quantite * $produit->prix;
+        $commande->save();
+
+        return redirect()->back()->with('success', 'Quantité mise à jour avec succès.');
+ }else{ 
+    return redirect()->back()->with('error', 'La quantité ne peut pas être inférieure à 1.');
+ }
+     
+ 
+    }
     public function store(Request $request,$id_produit,$id_panier)
     
     {
-        $request->validate([
-            'quantite'=> 'required|integer|min:1',
-            'prix_total' => 'required|numeric|min:0',
-            'address' => 'required|string|max:255',
-            'numero' => 'required|string|max:15',
-        ]);
+        $produit=Produit::find($id_produit);
+     
     
 Commande::create([
 'id_produit'=>$id_produit,
 'id_panier'=>$request->id_panier,
-'quantite'=>$request->quantite,
-'prix_total'=>$request->prix_total,
-'address'=>$request->address,
-'numero'=>$request->numero,
+'quantite'=>1,
+'prix_total'=>$produit->prix,
+'address'=>auth()->user()->address,
+'numero'=>auth()->user()->numero,
 ]); 
 return redirect("/")->with("success","la commande est ajoute au panier");
 

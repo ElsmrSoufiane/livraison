@@ -117,10 +117,11 @@ Route::get('/place/{id}', function ($id) {
 Route::get('/categorie/{id}', function ($id) {
    
     $categorie=Categorie::find($id);
+    $categories=Categorie::all();
 $categoriee=$categorie->categorie;
     $fournisseurs=Fournisseur::all();
     $produits=Produit::where("categorie_id",$id)->get();
-    return view('categorie',compact('produits','fournisseurs','categoriee'));
+    return view('categorie',compact('produits','fournisseurs','categoriee','categories'));
 })->name('categorie');
 Route::get('/inscrire', function () {
     return view('inscrire');
@@ -218,13 +219,14 @@ Route::post('/registrer', [authentificationController::class, 'registrer'])->nam
 
 Route::middleware('md:compte')->group(function () {
     Route::get("/comm/{id}",function($id){ 
+        $panier=Panier::where('id_client', auth()->user()->id)->first();
         $produit=Produit::find($id);
         $commentaires=Commentaire::where('produit_id',$id)->get();
 $averageNote = Star_rating::where('produit_id', $id)->avg('note');
         $comptes = Compte::all();
 
       
-        return view("commentaires",compact('produit','commentaires','comptes','averageNote'));
+        return view("commentaires",compact('produit','commentaires','comptes','averageNote','panier'));
     });
         
        Route::post("/commentaire/{id}",function(Request $request, $id){
@@ -292,7 +294,8 @@ Route::post("/star_rating/{id}",function(Request $request, $id){
     });
    
     Route::post('/commandes/{id_produit}/{id_panier}', [commandecontroller::class, 'store'])->name('commandes.store');
-Route::post('/commandes_personalise/{id_panier}', [commandecontroller::class, 'storepersonalise'])->name('commandespersonalise.store');
+    Route::get('/commandesplus/{id_commande}/', [commandecontroller::class, 'addquantite'])->name('addquantite');
+Route::get('/commandesmoin/{id_commande}', [commandecontroller::class, 'moinquantite'])->name('moinquantite');
 Route::get('/deleteCommande/{id}', function ($id) {
     $commande = Commande::find($id);
     if ($commande) {

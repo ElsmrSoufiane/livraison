@@ -28,13 +28,13 @@
 @endif
 @if(auth()->user()->role == 'compte')
 <li><a href="/panier" class="{{ Request::is('panier') ? 'active' : '' }}"><i class="fa fa-shopping-cart"></i>
-panier</a></li>
+panier <span class="btn btn-danger"> {{$nbrecommandes}} </span></a></li>
 
 <li><a href="/logout" class=""><i class="fa fa-user"></i>déconnecter</a></li>
+<li></li>
 @endif
 
 @endauth
-<li></li>
 
                   </ul>   <a class='menu-trigger'>
                         <span>Menu</span>

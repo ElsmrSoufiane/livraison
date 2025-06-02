@@ -448,29 +448,27 @@
 
   <div class="col-lg-4 col-md-6"> <!-- Open column -->
   
-    <div class="item"> <!-- Open item -->
+      <div class="item"> <!-- Open item -->
 
       <a href="/commander/{{$produit->id}}">
-      <img src="{{ asset('storage/' . $produit->image) }}" alt="Produit">
-
-
-
+        <img src="{{ asset('storage/' . $produit->image) }}" alt="">
+       
       </a>
-@foreach($fournisseurs as $fournisseur)
-@if($produit->fournisseur_id == $fournisseur->id)
-      <span class="category">{{$fournisseur->nom}}</span>
+
+      @foreach($categories as $categorie)
+@if($produit->categorie_id == $categorie->id)
+      <span class="category">{{$categorie->categorie}}</span>
       @endif
 @endforeach
       <h6>{{$produit->prix}}dhs</h6>
 
       <h4>
-        <a href="property-details.html">{{$produit->nom}}</a>
+        <a href="/commander/{{$produit->id}}">{{$produit->nom}}</a>
       </h4>
 
-      <div class="main-button">
-        <a href="/commander/{{$produit->id}}"><i class="fa fa-shopping-cart"></i></a>
-      </div> <!-- Close main-button -->
-      @include("review");
+   <div class="main-button">
+        <a href="/comm/{{$produit->id}}">voir les informations</a>
+      </div>
 
     </div> <!-- Close item -->
 

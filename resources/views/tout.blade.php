@@ -331,9 +331,9 @@
       </h4>
 
       <div class="main-button">
-        <a href="/commander/{{$produit->id}}"><i class="fa fa-shopping-cart"></i></a>
+        <a href="/comm/{{$produit->id}}">voir les informations</a>
       </div> <!-- Close main-button -->
-      @include("review")
+   
 
     </div> <!-- Close item --> 
 
@@ -386,10 +386,10 @@
         <a href="/commander/{{$produit->id}}">{{$produit->nom}}</a>
       </h4>
 
-      <div class="main-button">
-        <a href="/commander/{{$produit->id}}"><i class="fa fa-shopping-cart"></i></a>
+     <div class="main-button">
+        <a href="/comm/{{$produit->id}}">voir les informations</a>
       </div> <!-- Close main-button -->
-      @include("review")
+      
 
     </div> <!-- Close item --> 
 
@@ -442,10 +442,9 @@
         <a href="/commander/{{$produit->id}}">{{$produit->nom}}</a>
       </h4>
 
-      <div class="main-button">
-        <a href="/commander/{{$produit->id}}"><i class="fa fa-shopping-cart"></i></a>
-      </div> <!-- Close main-button -->
-      @include("review")
+     <div class="main-button">
+        <a href="/comm/{{$produit->id}}">voir les informations</a>
+      </div>
 
     </div> <!-- Close item --> 
 
@@ -500,10 +499,9 @@
         <a href="/commander/{{$produit->id}}">{{$produit->nom}}</a>
       </h4>
 
-      <div class="main-button">
-        <a href="/commander/{{$produit->id}}"><i class="fa fa-shopping-cart"></i></a>
-      </div> <!-- Close main-button -->
-      @include("review");
+     <div class="main-button">
+        <a href="/comm/{{$produit->id}}">voir les informations</a>
+      </div>;
 
     </div> <!-- Close item --> 
 
@@ -559,10 +557,9 @@
         <a href="/commander/{{$produit->id}}">{{$produit->nom}}</a>
       </h4>
 
-      <div class="main-button">
-        <a href="/commander/{{$produit->id}}"><i class="fa fa-shopping-cart"></i></a>
-      </div> <!-- Close main-button -->
-      @include("review");
+     <div class="main-button">
+        <a href="/comm/{{$produit->id}}">voir les informations</a>
+      </div>;
 
     </div> <!-- Close item --> 
 
@@ -617,10 +614,9 @@
         <a href="/commander/{{$produit->id}}">{{$produit->nom}}</a>
       </h4>
 
-      <div class="main-button">
-        <a href="/commander/{{$produit->id}}"><i class="fa fa-shopping-cart"></i></a>
-      </div> <!-- Close main-button -->
-      @include("review");
+     <div class="main-button">
+        <a href="/comm/{{$produit->id}}">voir les informations</a>
+      </div>;
 
     </div> <!-- Close item --> 
 
@@ -675,10 +671,9 @@
         <a href="/commander/{{$produit->id}}">{{$produit->nom}}</a>
       </h4>
 
-      <div class="main-button">
-        <a href="/commander/{{$produit->id}}"><i class="fa fa-shopping-cart"></i></a>
-      </div> <!-- Close main-button -->
-      @include("review");
+     <div class="main-button">
+        <a href="/comm/{{$produit->id}}">voir les informations</a>
+      </div>;
 
     </div> <!-- Close item --> 
 
@@ -734,10 +729,9 @@
         <a href="/commander/{{$produit->id}}">{{$produit->nom}}</a>
       </h4>
 
-      <div class="main-button">
-        <a href="/commander/{{$produit->id}}"><i class="fa fa-shopping-cart"></i></a>
-      </div> <!-- Close main-button -->
-      @include("review");
+     <div class="main-button">
+        <a href="/comm/{{$produit->id}}">voir les informations</a>
+      </div>;
 
     </div> <!-- Close item --> 
 
@@ -794,10 +788,9 @@
         <a href="/commander/{{$produit->id}}">{{$produit->nom}}</a>
       </h4>
 
-      <div class="main-button">
-        <a href="/commander/{{$produit->id}}"><i class="fa fa-shopping-cart"></i></a>
-      </div> <!-- Close main-button -->
-      @include("review");
+     <div class="main-button">
+        <a href="/comm/{{$produit->id}}">voir les informations</a>
+      </div>;
 
     </div> <!-- Close item --> 
 
