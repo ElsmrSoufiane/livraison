@@ -3,11 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Livreur;
-use App\Models\Produit;
-use App\Models\Fournisseur;
-use App\Models\Panier;
-use App\Models\Compte;
-use App\Models\Commande;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -19,17 +14,7 @@ class LivreurController extends Controller
         $livreurs = Livreur::all();
         return view('livreur.index', compact('livreurs')); 
     }
- public function show($id)
-    {
-        $livreur = Livreur::find($id);
-        $paniers= Panier::all();
-        $produits = Produit::all();
-        $fournisseurs = Fournisseur::all();
-        $comptes = Compte::all();
-        $commandes = Commande::where('id_livreur', $id)->get();
-        return view('livreur.show', compact('livreur', 'commandes', 'produits', 'fournisseurs', 'comptes','paniers'));
-        }
-    
+
     public function store(Request $request)
     {
         // 🔒 Validation des champs
@@ -39,7 +24,7 @@ class LivreurController extends Controller
             'mot_de_passe' => 'required|string|min:6',
             'address' => 'required|string|max:255',
             'numero' => 'required|string|max:15',
-            
+           
 // Contrôler que le rôle soit valide
         ]);
 
@@ -47,7 +32,7 @@ class LivreurController extends Controller
         Livreur::create([
             'nom' => $validated['nom'],
             'email' => $validated['email'],
-            'role' =>  "livreur", 
+             'role'=>"livreur",
             'mot_de_passe' => Hash::make($validated['mot_de_passe']), // Hash du mot de passe
             'address' => $validated['address'],
             'numero' => $validated['numero'],

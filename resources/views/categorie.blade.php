@@ -421,22 +421,18 @@
     </form>
 
 </div>
-<div class="contact-content">
-<div class="container">
-
-<div class="item " style="margin:10px;width:50%">
-                <img src="computer.png" alt="" style="max-width: 52px;">
-                <h6> {{$categoriee}}
-                <br></h6>
-                </div> </div></div>
-
-
-<div class="contact-content">
-<div class="container">
+  <div class="page-heading header-text">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <span class="breadcrumb">{{$categoriee}}</span>
+          
+        </div>
+      </div>
+    </div>
+  </div>
 
 
-                <div class="properties section" style="margin:0;padding:0;" style="margin:0;padding:0;">
-                <div class="container"> <!-- Open container -->
 
 <div class="row"> <!-- Open row -->
 @if($produits->count() == 0)
@@ -455,11 +451,9 @@
        
       </a>
 
-      @foreach($categories as $categorie)
-@if($produit->categorie_id == $categorie->id)
-      <span class="category">{{$categorie->categorie}}</span>
-      @endif
-@endforeach
+
+      <span class="category">{{$produit->categorie->categorie}}</span>
+
       <h6>{{$produit->prix}}dhs</h6>
 
       <h4>

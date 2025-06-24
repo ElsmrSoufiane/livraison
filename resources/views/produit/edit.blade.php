@@ -261,20 +261,7 @@ Les meilleurs restaurants et pâtisseries de Fès
                 @enderror
             </div>
 
-            <div class="input-group">
-                <label>Fournisseur</label>
-                <select name="fournisseur" value="{{$produit->fournisseur}}"  required>
-                    <option value="">Choisir fournisseur</option>
-                    @foreach($fournisseurs as $fournisseur)
-                        <option value="{{ $fournisseur->id }}" >
-                            {{ $fournisseur->nom }}
-                        </option>
-                    @endforeach
-                </select>
-                @error('fournisseur_id')
-                    <div class="text-danger">{{ $message }}</div>
-                @enderror
-            </div>
+           
 
             <div class="input-group">
                 <label>Catégorie</label>
@@ -303,10 +290,13 @@ Les meilleurs restaurants et pâtisseries de Fès
                     <div class="text-danger">{{ $message }}</div>
                 @enderror
             </div>
-
+<div>
             <button type="submit" class="btn">Modifier Produit</button>
             <a href="{{ route('produits.index') }}" class="btn" style="background: var(--primary)">Annuler</a>
+            </div>
+
         </form>
+
     </div>
 </div>
 @endsection

@@ -113,7 +113,7 @@
         <div class="row">
           <div class="col-lg-8 col-md-8">
             <ul class="info">
-              <li><i class="fa fa-envelope"></i> NTS5RLIK@gmail.com</li>
+              <li><i class="fa fa-envelope"></i> RapidoClick@gmail.com</li>
 
             </ul>
           </div>

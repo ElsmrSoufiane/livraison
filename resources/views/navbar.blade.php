@@ -6,7 +6,7 @@
                 <nav class="main-nav">
                     <!-- Logo -->
                     <a  class="logo" >
-                        <h1 >NTS5RLIK</h1>
+                        <h1 >RapidoClick</h1>
                     </a>
                     <!-- Menu -->
                     <ul class="nav">

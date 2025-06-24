@@ -222,23 +222,14 @@
                     <div class="cart-item">
                         <div class="row align-items-center">
                             <div class="col-12 col-md-2 mb-3 mb-md-0">
-                                @foreach($produits as $produit)
-                                    @if($produit->id == $commande->id_produit)
-                                        <img src="{{ asset('storage/'.$produit->image) }}" class="img-fluid rounded">
-                                    @endif
-                                @endforeach
+                            
+                                        <img src="{{ asset('storage/'.$commande->produit->image) }}" class="img-fluid rounded">
+                                  
                             </div>
                             <div class="col-12 col-md-4 mb-3 mb-md-0">
-                                @foreach($produits as $produit)
-                                    @if($produit->id == $commande->id_produit)
-                                        <h5>{{ $produit->nom }}</h5>
-                                        @foreach($fournisseurs as $fournisseur)
-                                            @if($fournisseur->id == $produit->fournisseur_id)
-                                                <p>{{ $fournisseur->nom }}</p>
-                                            @endif
-                                        @endforeach
-                                    @endif
-                                @endforeach
+                              
+                                        <h5>{{ $commande->produit->nom }}</h5>
+                                       
                             </div>
                             <div class="col-12 col-md-3 mb-3 mb-md-0">
                                 <div class="quantity-control d-flex align-items-center">
@@ -289,7 +280,7 @@
                         <span>{{ number_format($total, 2) }} dhs</span>
                     </div>
                     
-                    <a href="/" class="checkout-btn">
+                    <a href="/passer/{{$panier->id}}" class="checkout-btn">
                         Passer la commande
                     </a>
                 </div>

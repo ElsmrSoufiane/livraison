@@ -4,6 +4,7 @@ Les meilleurs restaurants et pâtisseries de Fès
 @endsection
 
 @section("content")
+
 <style>
     :root {
         --primary: #2A2F4F;
@@ -393,12 +394,13 @@ Les meilleurs restaurants et pâtisseries de Fès
 </style>
 
 <div class="admin-nav">
-    <div class="nav-logo">Fès Gourmet Admin</div>
+    <div class="nav-logo">RapidoClick</div>
     <div class="nav-user">
-        <span>Administrateur</span>
-        <div class="user-avatar">
-            <img src="https://ui-avatars.com/api/?name=Admin&background=2A2F4F&color=fff" alt="Admin">
-        </div>
+        
+      <span><a class="btn" href="/produits">gestion des produits</a></span>
+      <span><a class="btn" href="/pointdeventes">gestion des fournisseur</a></span>
+      <span><a class="btn" href="/livreurs">gestion des livreurs</a></span>
+       
     </div>
 </div>
 
@@ -406,15 +408,12 @@ Les meilleurs restaurants et pâtisseries de Fès
     <!-- Sidebar -->
     <aside class="sidebar">
         <ul class="sidebar-menu">
-            <li class="menu-item active" data-section="produits">
+            <li class="menu-item " data-section="produits">
                 <i class="fas fa-utensils"></i>
                 <span>Produits</span>
             </li>
-            <li class="menu-item" data-section="points-de-vente">
-                <i class="fas fa-store"></i>
-                <span>Points de vente</span>
-            </li>
-            <li class="menu-item" data-section="commandes">
+            
+            <li class="menu-item active" data-section="commandes">
                 <i class="fas fa-shopping-cart"></i>
                 <span>Commandes</span>
             </li>
@@ -505,14 +504,7 @@ Les meilleurs restaurants et pâtisseries de Fès
                     <label class="form-label">Prix</label>
                     <input class="form-control" name="Prix" type="number" step="0.01" required>
                 </div>
-                <div class="input-group">
-                    <label class="form-label">Fournisseur</label>
-                    <select class="form-control" name="Fournisseur" required>
-                        @foreach($fournisseurs as $fournisseur)
-                        <option value="{{ $fournisseur->id }}">{{ $fournisseur->nom }}</option>
-                        @endforeach
-                    </select>
-                </div>
+               
                 <div class="input-group">
                     <label class="form-label">Catégorie</label>
                     <select class="form-control" name="Catégorie" required>
@@ -533,43 +525,7 @@ Les meilleurs restaurants et pâtisseries de Fès
         </section>
 
         <!-- Section Points de vente -->
-        <section id="points-de-vente" class="card" style="display: none;">
-            <div class="card-header">
-                <h2 class="card-title">Ajouter Point de vente</h2>
-            </div>
-            <form class="form-grid" action="{{ route('pointdeventes.store') }}" method="POST" enctype="multipart/form-data">
-                @csrf
-                <div class="input-group">
-                    <label class="form-label">Nom</label>
-                    <input class="form-control" name="Nom" type="text" required>
-                </div>
-                <div class="input-group">
-                    <label class="form-label">Localisation</label>
-                    <input class="form-control" name="Localisation" type="text" required>
-                </div>
-                <div class="input-group">
-                    <label class="form-label">Description</label>
-                    <textarea class="form-control" name="Description" rows="3"></textarea>
-                </div>
-                <div class="input-group">
-                    <label class="form-label">Catégorie</label>
-                    <select class="form-control" name="Catégorie" required>
-                        @foreach($categories as $categorie)
-                        <option value="{{ $categorie->id }}">{{ $categorie->categorie }}</option>
-                        @endforeach
-                    </select>
-                </div>
-                <div class="input-group">
-                    <label class="form-label">Image</label>
-                    <input class="form-control" name="image" type="file" accept="image/*">
-                </div>
-                <button type="submit" class="btn">
-                    <i class="fas fa-save"></i>
-                    Enregistrer
-                </button>
-            </form>
-        </section>
-
+      
         <!-- Section Commandes -->
         <section id="commandes" class="card" style="display: none;">
             <div class="card-header">
@@ -596,19 +552,15 @@ Les meilleurs restaurants et pâtisseries de Fès
                         @foreach($commandes as $commande)
                         @if($commande->etat == "en attente")
                         <tr>
-                            @foreach($comptes as $compte)
-                            @if($compte->id == $commande->id_produit)
-                            <td data-label="Client">{{$compte->nom}}</td>
-                            @endif
-                            @endforeach
-                            @foreach($produits as $produit)
-                            @if($produit->id == $commande->id_produit)
-                            <td data-label="Produit">{{$produit->nom}}</td>
-                            @endif
-                            @endforeach
+                           
+                            <td data-label="Client">{{$commande->client->nom}}</td>
+                          
+                            
+                            <td data-label="Produit">{{$commande->produit->nom}}</td>
+                           
 
                             <td data-label="Quantité">{{$commande->quantite}}</td>
-                            <td data-label="Total">{{$commande->prix}} MAD</td>
+                            <td data-label="Total">{{$commande->prix_total}} MAD</td>
                             <td data-label="Contact">{{$commande->numero}}</td>
                             <td data-label="Adresse">{{$commande->address}}</td>
                             <td data-label="Actions">
@@ -698,7 +650,7 @@ Les meilleurs restaurants et pâtisseries de Fès
         });
         
         // Afficher la section Produits par défaut
-        showSection('produits');
+        showSection('commandes');
         
         // Intégration des icônes Font Awesome
         const faScript = document.createElement('script');

@@ -240,7 +240,7 @@ gestions des produits
                     <tr>
                         <th>Nom</th>
                         <th>Prix</th>
-                        <th>Fournisseur</th>
+                       
                         <th>categorie</th>
                         
                         <th>Actions</th>
@@ -251,18 +251,12 @@ gestions des produits
                     <tr>
                         <td>{{ $produit->nom }}</td>
                         <td>{{ number_format($produit->prix, 2) }} DH</td>
-                        @foreach($fournisseurs as $fournisseur)
-                        @if($produit->fournisseur_id == $fournisseur->id)
-                        <td>{{ $fournisseur->nom }}</td>
-                        @endif
+                       
                         
-                        @endforeach
-                        @foreach($categories as $categorie)
-                        @if($produit->categorie_id == $categorie->id)
-                        <td>{{ $categorie->categorie }}</td>
-                        @endif
+                        <td>{{ $produit->categorie->categorie}}</td>
+                       
                         
-                        @endforeach
+                       
                         <td>
                         <a href="/admin/produit/edit/{{ $produit->id }}" class="btn btn-primary">Modifier</a>
                         <a href="/admin/produit/delete/{{ $produit->id }}" class="btn btn-primary">suprimmer</a>

@@ -17,7 +17,7 @@ return new class extends Migration
             $table->decimal('prix', 8, 2);
             $table->text('description')->nullable();
             $table->string('image');
-             $table->foreignId('fournisseur_id')->constrained();
+           
              $table->foreignId('categorie_id')->constrained();
             $table->timestamps();
         });

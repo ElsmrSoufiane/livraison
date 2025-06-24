@@ -29,7 +29,7 @@ class ViewServiceProvider extends ServiceProvider
             $panier = \App\Models\Panier::where('id_client', $userId)->first();
 
             if ($panier) {
-                $nbrecommandes = \App\Models\Commande::where('id_panier', $panier->id)->count();
+                $nbrecommandes = \App\Models\Commande::where('id_panier', $panier->id)->where('etat', 'pas encore')->count();
             }
         }
 

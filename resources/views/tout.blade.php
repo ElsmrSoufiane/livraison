@@ -314,16 +314,14 @@
     <div class="item"> <!-- Open item -->
 
       <a href="/commander/{{$produit->id}}">
-      <img src="{{ asset('storage/' . $produit->image) }}" alt="Produit">
+      <img src="{{ asset('storage/'.$produit->image) }}" alt="Produit">
 
 
 
       </a>
-@foreach($fournisseurs as $fournisseur)
-@if($produit->fournisseur_id == $fournisseur->id)
-      <span class="category">{{$fournisseur->nom}}</span>
-      @endif
-@endforeach
+
+      <span class="category">{{$produit->categorie->categorie}}</span>
+
       <h6>{{$produit->prix}}dhs</h6>
 
       <h4>
@@ -363,39 +361,36 @@
 <div class="row"> <!-- Open row -->
 
 @foreach ($produits as $produit)
-
 @if($produit->categorie_id == 2)
   <div class="col-lg-4 col-md-6"> <!-- Open column -->
   
     <div class="item"> <!-- Open item -->
 
       <a href="/commander/{{$produit->id}}">
-      <img src="{{ asset('storage/' . $produit->image) }}" alt="Produit">
+      <img src="{{ asset('storage/'.$produit->image) }}" alt="Produit">
+
+
 
       </a>
 
-   @foreach($fournisseurs as $fournisseur)
-@if($produit->fournisseur_id == $fournisseur->id)
-      <span class="category">{{$fournisseur->nom}}</span>
-      @endif
-@endforeach
+      <span class="category">{{$produit->categorie->categorie}}</span>
 
-      <h6>{{$produit->prix}}dhs </h6>
+      <h6>{{$produit->prix}}dhs</h6>
 
       <h4>
-        <a href="/commander/{{$produit->id}}">{{$produit->nom}}</a>
+        <a href="property-details.html">{{$produit->nom}}</a>
       </h4>
 
-     <div class="main-button">
+      <div class="main-button">
         <a href="/comm/{{$produit->id}}">voir les informations</a>
       </div> <!-- Close main-button -->
-      
+   
 
     </div> <!-- Close item --> 
 
-  </div> <!-- Close column -->
-   @endif
-   @endforeach
+  </div> 
+  @endif
+  @endforeach
 
 </div> <!-- Close row -->
 
@@ -419,38 +414,36 @@
 <div class="row"> <!-- Open row -->
 
 @foreach ($produits as $produit)
-
 @if($produit->categorie_id == 3)
   <div class="col-lg-4 col-md-6"> <!-- Open column -->
   
     <div class="item"> <!-- Open item -->
 
       <a href="/commander/{{$produit->id}}">
-      <img src="{{ asset('storage/' . $produit->image) }}" alt="Produit">
+      <img src="{{ asset('storage/'.$produit->image) }}" alt="Produit">
+
+
 
       </a>
 
-   @foreach($fournisseurs as $fournisseur)
-@if($produit->fournisseur_id == $fournisseur->id)
-      <span class="category">{{$fournisseur->nom}}</span>
-      @endif
-@endforeach
+      <span class="category">{{$produit->categorie->categorie}}</span>
 
-      <h6>{{$produit->prix}}dhs </h6>
+      <h6>{{$produit->prix}}dhs</h6>
 
       <h4>
-        <a href="/commander/{{$produit->id}}">{{$produit->nom}}</a>
+        <a href="property-details.html">{{$produit->nom}}</a>
       </h4>
 
-     <div class="main-button">
+      <div class="main-button">
         <a href="/comm/{{$produit->id}}">voir les informations</a>
-      </div>
+      </div> <!-- Close main-button -->
+   
 
     </div> <!-- Close item --> 
 
-  </div> <!-- Close column -->
-   @endif
-   @endforeach
+  </div> 
+  @endif
+  @endforeach
 
 </div> <!-- Close row -->
 
@@ -476,38 +469,36 @@
 <div class="row"> <!-- Open row -->
 
 @foreach ($produits as $produit)
-
 @if($produit->categorie_id == 4)
   <div class="col-lg-4 col-md-6"> <!-- Open column -->
   
     <div class="item"> <!-- Open item -->
 
       <a href="/commander/{{$produit->id}}">
-      <img src="{{ asset('storage/' . $produit->image) }}" alt="Produit">
+      <img src="{{ asset('storage/'.$produit->image) }}" alt="Produit">
+
+
 
       </a>
 
-   @foreach($fournisseurs as $fournisseur)
-@if($produit->fournisseur_id == $fournisseur->id)
-      <span class="category">{{$fournisseur->nom}}</span>
-      @endif
-@endforeach
+      <span class="category">{{$produit->categorie->categorie}}</span>
 
-      <h6>{{$produit->prix}}dhs </h6>
+      <h6>{{$produit->prix}}dhs</h6>
 
       <h4>
-        <a href="/commander/{{$produit->id}}">{{$produit->nom}}</a>
+        <a href="property-details.html">{{$produit->nom}}</a>
       </h4>
 
-     <div class="main-button">
+      <div class="main-button">
         <a href="/comm/{{$produit->id}}">voir les informations</a>
-      </div>;
+      </div> <!-- Close main-button -->
+   
 
     </div> <!-- Close item --> 
 
-  </div> <!-- Close column -->
-   @endif
-   @endforeach
+  </div> 
+  @endif
+  @endforeach
 
 </div> <!-- Close row -->
 
@@ -534,38 +525,36 @@
 <div class="row"> <!-- Open row -->
 
 @foreach ($produits as $produit)
-
-@if($produit->categorie_id == 4)
+@if($produit->categorie_id == 5)
   <div class="col-lg-4 col-md-6"> <!-- Open column -->
   
     <div class="item"> <!-- Open item -->
 
       <a href="/commander/{{$produit->id}}">
-      <img src="{{ asset('storage/' . $produit->image) }}" alt="Produit">
+      <img src="{{ asset('storage/'.$produit->image) }}" alt="Produit">
+
+
 
       </a>
 
-   @foreach($fournisseurs as $fournisseur)
-@if($produit->fournisseur_id == $fournisseur->id)
-      <span class="category">{{$fournisseur->nom}}</span>
-      @endif
-@endforeach
+      <span class="category">{{$produit->categorie->categorie}}</span>
 
-      <h6>{{$produit->prix}}dhs </h6>
+      <h6>{{$produit->prix}}dhs</h6>
 
       <h4>
-        <a href="/commander/{{$produit->id}}">{{$produit->nom}}</a>
+        <a href="property-details.html">{{$produit->nom}}</a>
       </h4>
 
-     <div class="main-button">
+      <div class="main-button">
         <a href="/comm/{{$produit->id}}">voir les informations</a>
-      </div>;
+      </div> <!-- Close main-button -->
+   
 
     </div> <!-- Close item --> 
 
-  </div> <!-- Close column -->
-   @endif
-   @endforeach
+  </div> 
+  @endif
+  @endforeach
 
 </div> <!-- Close row -->
 
@@ -591,38 +580,36 @@
 <div class="row"> <!-- Open row -->
 
 @foreach ($produits as $produit)
-
 @if($produit->categorie_id == 6)
   <div class="col-lg-4 col-md-6"> <!-- Open column -->
   
     <div class="item"> <!-- Open item -->
 
       <a href="/commander/{{$produit->id}}">
-      <img src="{{ asset('storage/' . $produit->image) }}" alt="Produit">
+      <img src="{{ asset('storage/'.$produit->image) }}" alt="Produit">
+
+
 
       </a>
 
-   @foreach($fournisseurs as $fournisseur)
-@if($produit->fournisseur_id == $fournisseur->id)
-      <span class="category">{{$fournisseur->nom}}</span>
-      @endif
-@endforeach
+      <span class="category">{{$produit->categorie->categorie}}</span>
 
-      <h6>{{$produit->prix}}dhs </h6>
+      <h6>{{$produit->prix}}dhs</h6>
 
       <h4>
-        <a href="/commander/{{$produit->id}}">{{$produit->nom}}</a>
+        <a href="property-details.html">{{$produit->nom}}</a>
       </h4>
 
-     <div class="main-button">
+      <div class="main-button">
         <a href="/comm/{{$produit->id}}">voir les informations</a>
-      </div>;
+      </div> <!-- Close main-button -->
+   
 
     </div> <!-- Close item --> 
 
-  </div> <!-- Close column -->
-   @endif
-   @endforeach
+  </div> 
+  @endif
+  @endforeach
 
 </div> <!-- Close row -->
 
@@ -648,38 +635,36 @@
 <div class="row"> <!-- Open row -->
 
 @foreach ($produits as $produit)
-
 @if($produit->categorie_id == 7)
   <div class="col-lg-4 col-md-6"> <!-- Open column -->
   
     <div class="item"> <!-- Open item -->
 
       <a href="/commander/{{$produit->id}}">
-      <img src="{{ asset('storage/' . $produit->image) }}" alt="Produit">
+      <img src="{{ asset('storage/'.$produit->image) }}" alt="Produit">
+
+
 
       </a>
 
-   @foreach($fournisseurs as $fournisseur)
-@if($produit->fournisseur_id == $fournisseur->id)
-      <span class="category">{{$fournisseur->nom}}</span>
-      @endif
-@endforeach
+      <span class="category">{{$produit->categorie->categorie}}</span>
 
-      <h6>{{$produit->prix}}dhs </h6>
+      <h6>{{$produit->prix}}dhs</h6>
 
       <h4>
-        <a href="/commander/{{$produit->id}}">{{$produit->nom}}</a>
+        <a href="property-details.html">{{$produit->nom}}</a>
       </h4>
 
-     <div class="main-button">
+      <div class="main-button">
         <a href="/comm/{{$produit->id}}">voir les informations</a>
-      </div>;
+      </div> <!-- Close main-button -->
+   
 
     </div> <!-- Close item --> 
 
-  </div> <!-- Close column -->
-   @endif
-   @endforeach
+  </div> 
+  @endif
+  @endforeach
 
 </div> <!-- Close row -->
 
@@ -706,38 +691,36 @@
 <div class="row"> <!-- Open row -->
 
 @foreach ($produits as $produit)
-
 @if($produit->categorie_id == 8)
   <div class="col-lg-4 col-md-6"> <!-- Open column -->
   
     <div class="item"> <!-- Open item -->
 
       <a href="/commander/{{$produit->id}}">
-      <img src="{{ asset('storage/' . $produit->image) }}" alt="Produit">
+      <img src="{{ asset('storage/'.$produit->image) }}" alt="Produit">
+
+
 
       </a>
 
-   @foreach($fournisseurs as $fournisseur)
-@if($produit->fournisseur_id == $fournisseur->id)
-      <span class="category">{{$fournisseur->nom}}</span>
-      @endif
-@endforeach
+      <span class="category">{{$produit->categorie->categorie}}</span>
 
-      <h6>{{$produit->prix}}dhs </h6>
+      <h6>{{$produit->prix}}dhs</h6>
 
       <h4>
-        <a href="/commander/{{$produit->id}}">{{$produit->nom}}</a>
+        <a href="property-details.html">{{$produit->nom}}</a>
       </h4>
 
-     <div class="main-button">
+      <div class="main-button">
         <a href="/comm/{{$produit->id}}">voir les informations</a>
-      </div>;
+      </div> <!-- Close main-button -->
+   
 
     </div> <!-- Close item --> 
 
-  </div> <!-- Close column -->
-   @endif
-   @endforeach
+  </div> 
+  @endif
+  @endforeach
 
 </div> <!-- Close row -->
 
@@ -765,38 +748,36 @@
 <div class="row"> <!-- Open row -->
 
 @foreach ($produits as $produit)
-
-@if($produit->categorie_id == 1)
+@if($produit->categorie_id == 9)
   <div class="col-lg-4 col-md-6"> <!-- Open column -->
   
     <div class="item"> <!-- Open item -->
 
       <a href="/commander/{{$produit->id}}">
-      <img src="{{ asset('storage/' . $produit->image) }}" alt="Produit">
+      <img src="{{ asset('storage/'.$produit->image) }}" alt="Produit">
+
+
 
       </a>
 
-   @foreach($fournisseurs as $fournisseur)
-@if($produit->fournisseur_id == $fournisseur->id)
-      <span class="category">{{$fournisseur->nom}}</span>
-      @endif
-@endforeach
+      <span class="category">{{$produit->categorie->categorie}}</span>
 
-      <h6>{{$produit->prix}}dhs </h6>
+      <h6>{{$produit->prix}}dhs</h6>
 
       <h4>
-        <a href="/commander/{{$produit->id}}">{{$produit->nom}}</a>
+        <a href="property-details.html">{{$produit->nom}}</a>
       </h4>
 
-     <div class="main-button">
+      <div class="main-button">
         <a href="/comm/{{$produit->id}}">voir les informations</a>
-      </div>;
+      </div> <!-- Close main-button -->
+   
 
     </div> <!-- Close item --> 
 
-  </div> <!-- Close column -->
-   @endif
-   @endforeach
+  </div> 
+  @endif
+  @endforeach
 
 </div> <!-- Close row -->
 

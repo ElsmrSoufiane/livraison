@@ -12,10 +12,9 @@ class ProduitController extends Controller
 {
     public function index()
     {
-        $produits = Produit::all();
-        $fournisseurs = Fournisseur::all();
-        $categories = Categorie::all();
-        return view('produit.index', compact('produits','fournisseurs','categories'));
+        $produits = Produit::with("categorie")->get();
+      
+        return view('produit.index', compact('produits'));
     }
     public function store(Request $request)
     {
@@ -23,7 +22,7 @@ class ProduitController extends Controller
         $validated = $request->validate([
             'Nom_du_produit' => 'required|string|max:255',
             'Prix' => 'required|numeric|min:0',
-            'Fournisseur' => 'required|exists:fournisseurs,id',
+            
             'Catégorie' => 'required|exists:categories,id',
             'image' => 'nullable|image|max:2048',
         ]);
@@ -38,7 +37,7 @@ class ProduitController extends Controller
         $produit = new Produit();
         $produit->nom = $validated['Nom_du_produit'];
         $produit->prix = $validated['Prix'];
-        $produit->fournisseur_id = $validated['Fournisseur'];
+      
         $produit->categorie_id = $validated['Catégorie'];
         $produit->image = $imagePath ?? '';
         $produit->save();
@@ -47,17 +46,16 @@ class ProduitController extends Controller
     }
     public function edit($id)
     {
-        $produit = Produit::find($id);
-        $categories = Categorie::all();
-        $fournisseurs = Fournisseur::all();
-        return view('produit.edit', compact('produit','categories','fournisseurs'));
+        $produit = Produit::with('categorie')->findOrFail($id);
+   $categories = Categorie::all();
+        return view('produit.edit', compact('produit', 'categories'));
     }
     public function update($id,Request $request)
     {
       $validated = $request->validate([
             'nom_de_produit' => 'required|string|max:255',
             'prix' => 'required|numeric|min:0',
-            'fournisseur' => 'required|exists:fournisseurs,id',
+        
             'categorie' => 'required|exists:categories,id',
             'image' => 'nullable|image|max:2048',
         ]);
@@ -72,7 +70,7 @@ class ProduitController extends Controller
         Produit::where('id', $id)->update([
             'nom' => $validated['nom_de_produit'],
             'prix' => $validated['prix'],
-            'fournisseur_id' => $validated['fournisseur'],
+           
             'categorie_id' => $validated['categorie'],
             'image' => $imagePath,
         ]);

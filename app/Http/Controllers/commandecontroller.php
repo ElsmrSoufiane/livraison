@@ -50,6 +50,7 @@ Commande::create([
 'prix_total'=>$produit->prix,
 'address'=>auth()->user()->address,
 'numero'=>auth()->user()->numero,
+'etat'=>'pas encore',
 ]); 
 return redirect("/")->with("success","la commande est ajoute au panier");
 

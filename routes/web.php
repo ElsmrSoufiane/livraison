@@ -63,14 +63,23 @@ Route::middleware('md:livreur')->group(function (){
         return redirect()->back()->with('success', 'Commande terminée.');
     });
     Route::get('/livreur', function () {
-        $commandes = Commande::where('etat', "confirmé")->whereNull('id_livreur')->get();
-        $produits = Produit::all();
-        $fournisseurs = Fournisseur::all();
-        $comptes = Compte::all();
-        $paniers = Panier::all();
-        $commandeslivreur=Commande::where("id_livreur", auth()->user()->id)->where("etat","confirmé")->get();
-        $commandestermines=Commande::where("id_livreur", auth()->user()->id)->where("etat","terminé")->get();
-        return view('livreur',compact('commandes', 'produits', 'fournisseurs', 'comptes','paniers',"commandeslivreur","commandestermines"));
+        $commandes = Commande::with(["produit","panier"])->where('etat', "confirmé")->whereNull('id_livreur')->get();
+        $commandeslivreur=Commande::with(["produit","panier"])->where("id_livreur", auth()->user()->id)->where("etat","confirmé")->get();
+        $commandestermines=Commande::with(["produit","panier"])->where("id_livreur", auth()->user()->id)->where("etat","terminé")->get();
+        foreach ($commandes as $commande) {
+            $commande->client = $commande->panier->client()->first();
+        }
+        foreach ($commandeslivreur as $commande) {
+            $commande->client = $commande->panier->client()->first();
+        }
+        foreach ($commandestermines as $commande) {
+            $commande->client = $commande->panier->client()->first();
+        }
+
+
+
+
+        return view('livreur',compact('commandes', "commandeslivreur","commandestermines"));
     });
 });
 
@@ -84,10 +93,10 @@ Route::get('/login', function () {
 
 
 Route::get('/', function () {
-    $produits = Produit::all();
-    $fournisseurs=Fournisseur::all();;
+    $produits = Produit::with('categorie')->get();
+    
     $categories = Categorie::all();
-    return view('tout',compact('produits','categories','fournisseurs'));
+    return view('tout',compact('produits', 'categories'));
 });
 Route::get('/index', function () {
     return view('index');
@@ -116,12 +125,12 @@ Route::get('/place/{id}', function ($id) {
 });
 Route::get('/categorie/{id}', function ($id) {
    
-    $categorie=Categorie::find($id);
-    $categories=Categorie::all();
-$categoriee=$categorie->categorie;
-    $fournisseurs=Fournisseur::all();
-    $produits=Produit::where("categorie_id",$id)->get();
-    return view('categorie',compact('produits','fournisseurs','categoriee','categories'));
+    $categoriee=Categorie::find($id)->categorie;
+   
+
+  
+    $produits=Produit::With("categorie")->where("categorie_id",$id)->get();
+    return view('categorie',compact('produits','categoriee'));
 })->name('categorie');
 Route::get('/inscrire', function () {
     return view('inscrire');
@@ -162,12 +171,15 @@ Route::get("/logout", function () {
     });
     Route::get('/admin', function ()
 {
-    $fournisseurs = Fournisseur::all();
+ 
     $categories = Categorie::all();
-    $commandes = Commande::all();
-    $comptes = Compte::all();
+   $commandes = Commande::with(['panier','produit'])->get();
+foreach ($commandes as $commande) {
+        $commande->client = $commande->panier->client()->first();
+        
+ }
     $produits=Produit::all();
-    return view('admin', compact('fournisseurs', 'categories','commandes','comptes','produits'));
+    return view('admin', compact( 'categories','commandes','produits'));
 });
 Route::get('/livreurs', [LivreurController::class, 'index'])->name('livreurs.index');
 Route::post('/livreurs', [LivreurController::class, 'store'])->name('livreurs.store');
@@ -218,6 +230,20 @@ Route::post('/connecter', [authentificationController::class, 'login'])->name('l
 Route::post('/registrer', [authentificationController::class, 'registrer'])->name('registrer.store');
 
 Route::middleware('md:compte')->group(function () {
+    Route::get("/passer/{id}", function ($id) {
+        $panier=Panier::find($id);
+        $commandes=$panier->commandes()->where("etat","pas encore")->get();
+        if($commandes->isEmpty()){
+            return redirect()->back()->with('error', 'Votre panier est vide.');
+        }
+        foreach ($commandes as $commande) {
+            $commande->etat = "en attente";
+            $commande->save();
+ 
+        }
+        return redirect("/")->with('success', 'panier est commandé avec succès.');
+            
+    });
     Route::get("/comm/{id}",function($id){ 
         $panier=Panier::where('id_client', auth()->user()->id)->first();
         $produit=Produit::find($id);
@@ -306,11 +332,11 @@ Route::get('/deleteCommande/{id}', function ($id) {
 });
 Route::get('/panier', function () {
     $panier = Panier::where('id_client', auth()->user()->id)->first();
-    $commandes=Commande::where('id_panier', $panier->id)->get();
+    $commandes=Commande::with("produit") ->where('id_panier', $panier->id)->where('etat', "pas encore")->get();
   
-    $produits=Produit::all();
-    $fournisseurs = Fournisseur::all();
-    return view('panier',compact('produits','panier','commandes','fournisseurs'));
+   
+   
+    return view('panier',compact('panier','commandes'));
 });
  });
     

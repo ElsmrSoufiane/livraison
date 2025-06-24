@@ -17,7 +17,7 @@ class DatabaseSeeder extends Seeder
             categorieseeder::class,
           
             clientseeder::class,
-            panierseeder::class,
+       
             
         ]);
     }

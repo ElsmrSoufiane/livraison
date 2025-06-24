@@ -143,16 +143,10 @@ les meilleurs restaurants et patisseries de fes
                 
                 <div class="commande-details">
                     <div class="detail-item">
-                        @foreach ($paniers as $panier)
-                        @if ($panier->id == $commande->id_panier)
-                        @foreach ($comptes as $compte)
-                        @if ($compte->id == $panier->id_client)
+                      
                         <strong>Client:</strong>
-                        <span>{{$compte->nom}}</span>
-                        @endif
-                        @endforeach
-                        @endif
-                        @endforeach
+                        <span>{{$commande->client->nom}}</span>
+                        
                     </div>
                     
                     <div class="detail-item">
@@ -166,20 +160,12 @@ les meilleurs restaurants et patisseries de fes
                     </div>
                 </div>
 
-                <div style="margin-top: 20px;">
-                @foreach ($produits as $produit)
-                @if ($produit->id == $commande->id_produit)
-                    <h3 style="color: var(--primary); margin-bottom: 15px;">{{$produit->nom}}</h3>
+                    <div style="margin-top: 20px;">
+           
+                    <h3 style="color: var(--primary); margin-bottom: 15px;">{{$commande->produit->nom}}</h3>
                     <div class="produit-item" style="display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #eee;">
                         
-                        @foreach( $fournisseurs as $fournisseur)
-
-                        @if ($produit->id_fournisseur == $fournisseur->id)
-                        <span>par {{$fournisseur->nom}} </span>
-                        @endif
-                        @endforeach
-                        @endif
-                        @endforeach
+                       
                         <span>Quantité: {{$commande->quantite}} </span>
                     </div>
                 </div>
@@ -202,16 +188,10 @@ les meilleurs restaurants et patisseries de fes
                 
                 <div class="commande-details">
                     <div class="detail-item">
-                        @foreach ($paniers as $panier)
-                        @if ($panier->id == $commande->id_panier)
-                        @foreach ($comptes as $compte)
-                        @if ($compte->id == $panier->id_client)
+                      
                         <strong>Client:</strong>
-                        <span>{{$compte->nom}}</span>
-                        @endif
-                        @endforeach
-                        @endif
-                        @endforeach
+                        <span>{{$commande->client->nom}}</span>
+                        
                     </div>
                     
                     <div class="detail-item">
@@ -226,20 +206,11 @@ les meilleurs restaurants et patisseries de fes
                 </div>
 
                 <div style="margin-top: 20px;">
-                @foreach ($produits as $produit)
            
-                @if ($produit->id == $commande->id_produit)
-                    <h3 style="color: var(--primary); margin-bottom: 15px;">{{$produit->nom}}</h3>
+                    <h3 style="color: var(--primary); margin-bottom: 15px;">{{$commande->produit->nom}}</h3>
                     <div class="produit-item" style="display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #eee;">
                         
-                        @foreach( $fournisseurs as $fournisseur)
-
-                        @if ($produit->id_fournisseur == $fournisseur->id)
-                        <span>par {{$fournisseur->nom}} </span>
-                        @endif
-                        @endforeach
-                        @endif
-                        @endforeach
+                       
                         <span>Quantité: {{$commande->quantite}} </span>
                     </div>
                 </div>
@@ -265,16 +236,10 @@ les meilleurs restaurants et patisseries de fes
                 
                 <div class="commande-details">
                     <div class="detail-item">
-                        @foreach ($paniers as $panier)
-                        @if ($panier->id == $commande->id_panier)
-                        @foreach ($comptes as $compte)
-                        @if ($compte->id == $panier->id_client)
+
                         <strong>Client:</strong>
-                        <span>{{$compte->nom}}</span>
-                        @endif
-                        @endforeach
-                        @endif
-                        @endforeach
+                        <span>{{$commande->client->nom}}</span>
+                      
                     </div>
                     
                     <div class="detail-item">
@@ -288,21 +253,12 @@ les meilleurs restaurants et patisseries de fes
                     </div>
                 </div>
 
-                <div style="margin-top: 20px;">
-                @foreach ($produits as $produit)
+                    <div style="margin-top: 20px;">
            
-                @if ($produit->id == $commande->id_produit)
-                    <h3 style="color: var(--primary); margin-bottom: 15px;">{{$produit->nom}}</h3>
+                    <h3 style="color: var(--primary); margin-bottom: 15px;">{{$commande->produit->nom}}</h3>
                     <div class="produit-item" style="display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #eee;">
                         
-                        @foreach( $fournisseurs as $fournisseur)
-
-                        @if ($produit->id_fournisseur == $fournisseur->id)
-                        <span>par {{$fournisseur->nom}} </span>
-                        @endif
-                        @endforeach
-                        @endif
-                        @endforeach
+                       
                         <span>Quantité: {{$commande->quantite}} </span>
                     </div>
                 </div>
