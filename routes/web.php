@@ -29,6 +29,9 @@ use Illuminate\Http\Request;
 |
 */
 
+Route::get('/propos', function () {
+    return view('propos');
+});
 
 Route::post('/categorie', function (Request $request) {
      $category = $request->input('category');

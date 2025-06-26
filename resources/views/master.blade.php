@@ -113,7 +113,7 @@
         <div class="row">
           <div class="col-lg-8 col-md-8">
             <ul class="info">
-              <li><i class="fa fa-envelope"></i> RapidoClick@gmail.com</li>
+              <li><i class="fa fa-envelope"></i> shop@gmail.com</li>
 
             </ul>
           </div>
@@ -139,31 +139,7 @@
 <footer class="footer">
     <div class="container">
         <div class="row">
-            <div class="col-md-4 mb-4">
-                <h5>Contact</h5>
-                <ul class="list-unstyled">
-                    <li><i class="fas fa-phone me-2"></i>+212 6 12 34 56 78</li>
-                    <li><i class="fas fa-envelope me-2"></i>contact@livraisonfes.ma</li>
-                    <li><i class="fas fa-map-marker-alt me-2"></i>Fès Médina, Maroc</li>
-                </ul>
-            </div>
-            <div class="col-md-4 mb-4">
-                <h5>Liens utiles</h5>
-                <ul class="list-unstyled">
-                    <li><a href="/" class="text-light">Accueil</a></li>
-                    <li><a href="/places" class="text-light">Établissements</a></li>
-                    <li><a href="/contact" class="text-light">Contact</a></li>
-                </ul>
-            </div>
-            <div class="col-md-4 mb-4">
-                <h5>Réseaux sociaux</h5>
-                <div class="social-links">
-                    <a href="#"><i class="fab fa-facebook"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                </div>
-            </div>
-        </div>
+            
         <div class="text-center pt-3 border-top">
             <p class="mb-0">
                 © 2023 Livraison Fès. Tous droits réservés

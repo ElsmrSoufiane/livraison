@@ -6,12 +6,12 @@
                 <nav class="main-nav">
                     <!-- Logo -->
                     <a  class="logo" >
-                        <h1 >RapidoClick</h1>
+                        <h1 >shop</h1>
                     </a>
                     <!-- Menu -->
                     <ul class="nav">
                     <li><a href="/" class="{{ Request::is('/') ? 'active' : '' }}">Principale</a></li>
-<li><a href="/places" class="{{ Request::is('places') ? 'active' : '' }}">Places</a></li>
+<li><a href="/propos" class="{{ Request::is('propos') ? 'active' : '' }}">À propos</a></li>
 <li> <div></div> </li>
 @guest()
 <li><a href="/connecter" class="{{ Request::is('connecter') ? 'active' : '' }}">Connecter</a></li>
@@ -31,10 +31,10 @@
 panier <span class="btn btn-danger"> {{$nbrecommandes}} </span></a></li>
 
 <li><a href="/logout" class=""><i class="fa fa-user"></i>déconnecter</a></li>
-<li></li>
+
 @endif
 
-@endauth
+@endauth <li></li>
 
                   </ul>   <a class='menu-trigger'>
                         <span>Menu</span>
