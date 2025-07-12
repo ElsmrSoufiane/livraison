@@ -214,15 +214,12 @@
 
 @php
 $categoriesVetements = [
-    ['title' => 'Caftans', 'img' => 'https://example.com/caftan.jpg', 'id' => 1],
-    ['title' => 'Jabadors', 'img' => 'https://example.com/jabador.jpg', 'id' => 2],
-    ['title' => 'Takchitas', 'img' => 'https://example.com/takchita.jpg', 'id' => 3],
-    ['title' => 'Robes traditionnelles', 'img' => 'https://example.com/robe.jpg', 'id' => 4],
-    ['title' => 'Accessoires (ceintures, babouches)', 'img' => 'https://example.com/accessoires.jpg', 'id' => 5],
-    ['title' => 'Vêtements pour hommes', 'img' => 'https://example.com/hommes.jpg', 'id' => 6],
-    ['title' => 'Vêtements pour enfants', 'img' => 'https://example.com/enfants.jpg', 'id' => 7],
-    ['title' => 'Tenues de mariage', 'img' => 'https://example.com/mariage.jpg', 'id' => 8]
-];
+
+    ['title' => 'Jabadors', 'img' => 'https://example.com/jabador.jpg', 'id' => 1],
+
+
+    ['title' => 'Accessoires', 'img' => 'https://example.com/accessoires.jpg', 'id' => 2],
+  
 @endphp
 
 <!-- Section Recherche et Filtres -->
