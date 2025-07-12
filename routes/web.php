@@ -172,17 +172,79 @@ Route::get("/logout", function () {
         }
         return redirect()->back()->with('error', 'Commande non trouvée.');
     });
-    Route::get('/admin', function ()
-{
- 
+   Route::get('/admin', function () {
+    // Données existantes
     $categories = Categorie::all();
-   $commandes = Commande::with(['panier','produit'])->get();
-foreach ($commandes as $commande) {
+    $commandes = Commande::with(['panier', 'produit'])->get();
+    
+    foreach ($commandes as $commande) {
         $commande->client = $commande->panier->client()->first();
-        
- }
-    $produits=Produit::all();
-    return view('admin', compact( 'categories','commandes','produits'));
+    }
+    
+    $produits = Produit::all();
+    
+    // Statistiques pour le mois courant
+    $now = now();
+    $startOfMonth = $now->startOfMonth();
+    $endOfMonth = $now->endOfMonth();
+    
+    // Statistiques pour le mois précédent
+    $lastMonthStart = $now->copy()->subMonth()->startOfMonth();
+    $lastMonthEnd = $now->copy()->subMonth()->endOfMonth();
+    
+    // Commandes ce mois
+    $commandesCeMois = Commande::whereBetween('created_at', [$startOfMonth, $endOfMonth])->count();
+    
+    // Commandes mois dernier
+    $commandesMoisDernier = Commande::whereBetween('created_at', [$lastMonthStart, $lastMonthEnd])->count();
+    
+    // Calcul pourcentage commandes
+    $pourcentageCommandes = $commandesMoisDernier != 0 
+        ? (($commandesCeMois - $commandesMoisDernier) / $commandesMoisDernier) * 100 
+        : 0;
+    
+    // Revenu total ce mois
+    $revenuCeMois = Commande::whereBetween('created_at', [$startOfMonth, $endOfMonth])->sum('prix_total');
+    
+    // Revenu mois dernier
+    $revenuMoisDernier = Commande::whereBetween('created_at', [$lastMonthStart, $lastMonthEnd])->sum('prix_total');
+    
+    // Calcul pourcentage revenu
+    $pourcentageRevenu = $revenuMoisDernier != 0 
+        ? (($revenuCeMois - $revenuMoisDernier) / $revenuMoisDernier) * 100 
+        : 0;
+    
+    // Nouveaux clients ce mois (supposant que vous avez un modèle Client)
+    $nouveauxClientsCeMois = Compte::whereBetween('created_at', [$startOfMonth, $endOfMonth])->count();
+    
+    // Nouveaux clients mois dernier
+    $nouveauxClientsMoisDernier = Compte::whereBetween('created_at', [$lastMonthStart, $lastMonthEnd])->count();
+    
+    // Calcul pourcentage nouveaux clients
+    $pourcentageNouveauxClients = $nouveauxClientsMoisDernier != 0 
+        ? (($nouveauxClientsCeMois - $nouveauxClientsMoisDernier) / $nouveauxClientsMoisDernier) * 100 
+        : 0;
+    
+    // Préparer les données pour la vue
+    $stats = [
+        'commandes' => [
+            'ce_mois' => $commandesCeMois,
+            'pourcentage' => round($pourcentageCommandes, 2),
+            'evolution' => $pourcentageCommandes >= 0 ? 'up' : 'down'
+        ],
+        'revenu' => [
+            'ce_mois' => $revenuCeMois,
+            'pourcentage' => round($pourcentageRevenu, 2),
+            'evolution' => $pourcentageRevenu >= 0 ? 'up' : 'down'
+        ],
+        'nouveaux_clients' => [
+            'ce_mois' => $nouveauxClientsCeMois,
+            'pourcentage' => round($pourcentageNouveauxClients, 2),
+            'evolution' => $pourcentageNouveauxClients >= 0 ? 'up' : 'down'
+        ]
+    ];
+    
+    return view('admin', compact('categories', 'commandes', 'produits', 'stats'));
 });
 Route::get('/livreurs', [LivreurController::class, 'index'])->name('livreurs.index');
 Route::post('/livreurs', [LivreurController::class, 'store'])->name('livreurs.store');

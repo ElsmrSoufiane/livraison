@@ -6,7 +6,7 @@
                 <nav class="main-nav">
                     <!-- Logo -->
                     <a  class="logo" >
-                        <h1 >shop</h1>
+                        <h1 >ta9lidi</h1>
                     </a>
                     <!-- Menu -->
                     <ul class="nav">

@@ -1,11 +1,12 @@
 <?php
 
 namespace Database\Seeders;
+
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class categorieseeder extends Seeder
+class CategorieSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -13,15 +14,16 @@ class categorieseeder extends Seeder
     public function run(): void
     {
         $categories = [
-            ['categorie' => 'Ordinateurs portables'],
-            ['categorie' => 'Accessoires PC'],
-            ['categorie' => 'Composants PC'],
-            ['categorie' => 'Périphériques'],
-            ['categorie' => 'Réseaux & Internet'],
-            ['categorie' => 'Stockage'],
-            ['categorie' => 'Support & câblage'],
-            ['categorie' => 'Gaming'],
-        
+            ['categorie' => 'Caftans'],
+            ['categorie' => 'Jabadors'],
+            ['categorie' => 'Takchitas'],
+            ['categorie' => 'Robes traditionnelles'],
+            ['categorie' => 'Accessoires (ceintures, babouches)'],
+            ['categorie' => 'Vêtements pour hommes (Jellabas, Gandouras)'],
+            ['categorie' => 'Vêtements pour enfants'],
+            ['categorie' => 'Tenues de mariage'],
+            ['categorie' => 'Pieces brodées à la main'],
+            ['categorie' => 'Tissus traditionnels'],
         ];
 
         DB::table('categories')->insert($categories);
