@@ -215,11 +215,10 @@
 @php
 $categoriesVetements = [
 
-    ['title' => 'Jabadors', 'img' => 'https://example.com/jabador.jpg', 'id' => 1],
+    ['title' => 'Jabadors', 'img' => '', 'id' => 1],
 
 
-    ['title' => 'Accessoires', 'img' => 'https://example.com/accessoires.jpg', 'id' => 2],
-  
+    ['title' => 'Accessoires', 'img' => '', 'id' => 2] ];  
 @endphp
 
 <!-- Section Recherche et Filtres -->
