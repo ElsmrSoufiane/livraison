@@ -90,27 +90,7 @@
         font-size: 24px;
     }
 </style>
-<style>
-:root {
-  --font-traditional: 'Amiri', serif;
-  --font-decorative: 'El Messiri', sans-serif;
-}
 
-body {
-  font-family: var(--font-traditional);
-}
-
-h1, h2, h3, .category-title {
-  font-family: var(--font-decorative);
-  letter-spacing: 1px;
-}
-
-/* Pour les textes en arabe */
-.arabic-text {
-  font-family: 'Amiri', serif;
-  direction: rtl;
-}
-</style>
 <!-- Replace PHONE_NUMBER with your actual number (include country code, e.g., +1234567890) -->
 <a href="https://wa.me/0766548709" class="whatsapp-btn" target="_blank">
     <i class="fab fa-whatsapp"></i> commander sur WhatsApp
@@ -133,7 +113,7 @@ h1, h2, h3, .category-title {
         <div class="row">
           <div class="col-lg-8 col-md-8">
             <ul class="info">
-              <li><i class="fa fa-envelope"></i> ta9lidi@gmail.com</li>
+              <li><i class="fa fa-envelope"></i> m_mcreationn@gmail.com</li>
 
             </ul>
           </div>
@@ -162,7 +142,7 @@ h1, h2, h3, .category-title {
             
         <div class="text-center pt-3 border-top">
             <p class="mb-0">
-                © 2025 Livraison Fès. Tous droits réservés
+                © 2023 Livraison Fès. Tous droits réservés
             </p>
         </div>
     </div>
