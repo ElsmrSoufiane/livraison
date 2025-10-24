@@ -1,11 +1,7 @@
 @extends("master")
-@section("title") Site de Vêtements Marocains Traditionnels @endsection
+@section("title") Site Livraison Fes @endsection
 
 @section("content")
-<!-- Dans le <head> -->
-<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=El+Messiri:wght@400;600&display=swap" rel="stylesheet">
-
-
 <style>
     /* Search and Filter Styles */
     .search-filter-container {
@@ -36,282 +32,559 @@
         font-size: 1rem;
     }
     
-    /* Enhanced Category Cards */
-    .category-section {
-        padding: 4rem 0;
-        background: #f9fafb;
+    /* Category Cards Styles */
+    :root {
+        --d: 700ms;
+        --e: cubic-bezier(0.19, 1, 0.22, 1);
+        --font-sans: 'Rubik', sans-serif;
+        --font-serif: 'Cardo', serif;
+        --primary-color: #2c3e50;
+        --accent-color: #e74c3c;
     }
-    
-    .category-header {
+
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    .page-header {
         text-align: center;
         margin-bottom: 3rem;
+        padding: 0 1rem;
     }
-    
-    .category-header h2 {
-        font-size: 2.5rem;
-        font-weight: 700;
-        background: linear-gradient(to right, #fc7f09, #ff4d4d);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
+
+    .page-header h1 {
+        font-size: 2.8rem;
+        color: var(--primary-color);
         margin-bottom: 1rem;
+        font-weight: 700;
     }
-    
-    .category-header p {
-        color: #6b7280;
-        font-size: 1.1rem;
-        max-width: 700px;
+
+    .page-header p {
+        font-size: 1.2rem;
+        color: #666;
+        max-width: 600px;
         margin: 0 auto;
+        line-height: 1.6;
     }
-    
-    .category-grid {
+
+    .page-content {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 2rem;
+        grid-gap: 2rem;
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 1rem;
     }
-    
-    .category-card {
+
+    @media (min-width: 600px) {
+        .page-content {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (min-width: 900px) {
+        .page-content {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+
+    .card {
         position: relative;
-        border-radius: 16px;
+        display: flex;
+        align-items: flex-end;
         overflow: hidden;
-        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-        height: 360px;
-        background: white;
-    }
-    
-    .category-img-container {
-        height: 65%;
-        overflow: hidden;
-        position: relative;
-    }
-    
-    .category-img {
+        padding: 2rem;
         width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: transform 0.8s ease;
+        text-align: center;
+        color: white;
+        background-color: white;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        border-radius: 12px;
+        min-height: 320px;
+        transition: all 0.4s ease;
+        cursor: pointer;
+        text-decoration: none;
     }
-    
-    .category-badge {
+
+    .card:hover {
+        box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+        transform: translateY(-5px);
+        text-decoration: none;
+        color: white;
+    }
+
+    @media (min-width: 600px) {
+        .card {
+            height: 380px;
+        }
+    }
+
+    .card:before {
+        content: '';
         position: absolute;
-        top: 1rem;
-        right: 1rem;
-        background: rgba(255,255,255,0.9);
-        padding: 0.5rem 1rem;
-        border-radius: 50px;
-        font-weight: 600;
-        font-size: 0.9rem;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        z-index: 2;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 110%;
+        background-size: cover;
+        background-position: center;
+        transition: transform calc(var(--d) * 1.5) var(--e);
+        pointer-events: none;
+        border-radius: 12px;
+        background-image: var(--bg-image);
     }
-    
-    .category-content {
-        padding: 1.5rem;
-        height: 35%;
+
+    .card:after {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 200%;
+        pointer-events: none;
+        background-image: linear-gradient(
+            to bottom,
+            hsla(0, 0%, 0%, 0) 0%,
+            hsla(0, 0%, 0%, 0.8) 100%
+        );
+        transform: translateY(-50%);
+        transition: transform calc(var(--d) * 2) var(--e);
+        border-radius: 12px;
+    }
+
+    .content {
+        position: relative;
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
-    }
-    
-    .category-title {
-        font-size: 1.4rem;
-        font-weight: 700;
-        margin-bottom: 0.5rem;
-        color: #111827;
-    }
-    
-    .category-desc {
-        color: #6b7280;
-        font-size: 0.95rem;
-        margin-bottom: 1.2rem;
-        display: -webkit-box;
-        -webkit-line-clamp: 2;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-    }
-    
-    .category-footer {
-        display: flex;
-        justify-content: space-between;
         align-items: center;
+        width: 100%;
+        padding: 1.5rem;
+        transition: transform var(--d) var(--e);
+        z-index: 1;
     }
-    
-    .category-btn {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-        padding: 0.6rem 1.5rem;
-        background: linear-gradient(to right, #fc7f09, #ff4d4d);
+
+    .content > * + * {
+        margin-top: 1.2rem;
+    }
+
+    .title {
         color: white;
-        border-radius: 50px;
-        text-decoration: none;
-        font-weight: 600;
-        font-size: 0.9rem;
-        transition: all 0.3s ease;
-        box-shadow: 0 4px 15px rgba(252, 127, 9, 0.3);
+        font-size: 1.6rem;
+        font-weight: 700;
+        line-height: 1.3;
+        text-shadow: 0 3px 6px rgba(0,0,0,0.7);
+        letter-spacing: 0.5px;
     }
-    
-    .category-btn i {
-        font-size: 0.9rem;
+
+    .copy {
+        color: white;
+        font-family: var(--font-serif);
+        font-size: 1.1rem;
+        font-style: italic;
+        line-height: 1.5;
+        opacity: 0.95;
+        text-shadow: 0 2px 4px rgba(0,0,0,0.5);
     }
-    
-    .category-count {
-        color: #6b7280;
+
+    .btn {
+        cursor: pointer;
+        margin-top: 1.5rem;
+        padding: 0.9rem 2rem;
         font-size: 0.85rem;
-        display: flex;
-        align-items: center;
-        gap: 0.3rem;
+        font-weight: 600;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        color: white;
+        background-color: var(--accent-color);
+        border: none;
+        border-radius: 6px;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        text-decoration: none;
+        display: inline-block;
     }
-    
-    /* Hover Effects */
-    .category-card:hover {
-        transform: translateY(-8px);
-        box-shadow: 0 15px 40px rgba(0,0,0,0.15);
-    }
-    
-    .category-card:hover .category-img {
-        transform: scale(1.1);
-    }
-    
-    .category-card:hover .category-btn {
+
+    .btn:hover {
+        background-color: #c0392b;
         transform: translateY(-2px);
-        box-shadow: 0 6px 20px rgba(252, 127, 9, 0.4);
+        box-shadow: 0 6px 12px rgba(0,0,0,0.4);
+        color: white;
+        text-decoration: none;
     }
-    
-    /* Responsive */
-    @media (max-width: 768px) {
-        .search-filter-container {
-            flex-direction: column;
+
+    /* Mobile - Always show all content */
+    @media (max-width: 599px) {
+        .card {
+            align-items: center;
         }
         
-        .search-box {
-            margin-right: 0;
-            margin-bottom: 1rem;
+        .content > *:not(.title) {
+            opacity: 1 !important;
+            transform: translateY(0) !important;
+        }
+    }
+
+    /* Desktop hover effects */
+    @media (hover: hover) and (min-width: 600px) {
+        .card:after {
+            transform: translateY(0);
         }
         
-        .category-filter {
-            width: 100%;
+        .content {
+            transform: translateY(calc(100% - 5rem));
         }
         
-        .category-grid {
-            grid-template-columns: 1fr;
+        .content > *:not(.title) {
+            opacity: 0;
+            transform: translateY(1.5rem);
+            transition:
+                transform var(--d) var(--e),
+                opacity var(--d) var(--e);
         }
         
-        .category-card {
-            height: 320px;
+        .card:hover,
+        .card:focus-within {
+            align-items: center;
+        }
+
+        .card:hover:before,
+        .card:focus-within:before { 
+            transform: translateY(-5%); 
         }
         
-        .category-header h2 {
-            font-size: 2rem;
+        .card:hover:after,
+        .card:focus-within:after { 
+            transform: translateY(-50%); 
+        }
+
+        .card:hover .content,
+        .card:focus-within .content {
+            transform: translateY(0);
+        }
+
+        .card:hover .content > *:not(.title),
+        .card:focus-within .content > *:not(.title) {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: calc(var(--d) / 6);
         }
     }
 </style>
+
 @if(session('success'))
     <div class="alert alert-success">
         {{ session('success') }}
     </div>
 @endif
 
-@php
-$categoriesVetements = [
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
 
-    ['title' => 'Jabadors', 'img' => '', 'id' => 1],
+<br>
 
-
-    ['title' => 'Accessoires', 'img' => '', 'id' => 2] ];  
-@endphp
-
-<!-- Section Recherche et Filtres -->
-<div class="search-filter-container">
-    <!-- Formulaire de recherche -->
+<!-- Search and Filter Section -->
+<div class="search-filter-container" style="display: flex; gap: 1rem; flex-wrap: wrap; align-items: center;">
+    <!-- Search Form -->
     <form action="{{ url('/search') }}" method="POST" class="search-box">
         @csrf
-        <input type="search" name="search" placeholder="Rechercher des vêtements...">
+        <input 
+            type="search" 
+            name="search" 
+            placeholder="Rechercher des produits..." 
+        >
     </form>
 
-    <!-- Filtre par catégorie -->
+    <!-- Category Filter Form -->
     <form action="{{ url('/categorie') }}" method="POST" class="category-filter">
         @csrf
         <select name="category" onchange="this.form.submit()">
             <option value="">Toutes les catégories</option>
-            @foreach($categoriesVetements as $categorie)
-                <option value="{{ $categorie['id'] }}">
-                    {{ $categorie['title'] }}
+            @foreach($categories as $categorie)
+                <option value="{{ $categorie->id }}">
+                    {{ $categorie->categorie }}
                 </option>
             @endforeach
         </select>
     </form>
 </div>
 
-<!-- Section Catégories -->
-<section class="category-section">
-    <div class="container">
-        <div class="category-header">
-            <h2>Nos Collections Traditionnelles</h2>
-            <p>Découvrez l'artisanat marocain à travers nos vêtements traditionnels faits main</p>
-        </div>
+<link href="https://fonts.googleapis.com/css?family=Cardo:400i|Rubik:400,700&display=swap" rel="stylesheet">
 
-        <div class="category-grid">
-            @foreach($categoriesVetements as $categorie)
-               <a href="/categorie/{{ $categorie['id'] }}"> 
-                   <div class="category-card">
-                       <div class="category-img-container">
-                           <span class="category-badge">Ta9lidi</span>
-                           <img src="{{ $categorie['img'] }}" alt="{{ $categorie['title'] }}" class="category-img">
-                       </div>
-                       <div class="category-content">
-                           <div>
-                               <h3 class="category-title">{{ $categorie['title'] }}</h3>
-                               <p class="category-desc">Collection exclusive de {{ strtolower($categorie['title']) }} artisanaux</p>
-                           </div>
-                           <div class="category-footer">
-                               <span class="category-count"><i class="fas fa-tshirt"></i> Plusieurs modèles</span>
-                           </div>
-                       </div>
-                   </div>
-               </a>
-            @endforeach
-        </div>
-    </div>
-</section>
+<div class="page-header">
+    <h1>Nos Catégories</h1>
+    <p>Découvrez nos produits à travers nos différentes catégories. Survolez les cartes pour plus de détails.</p>
+</div>
 
-<!-- Section Produits par Catégorie -->
-@foreach($categoriesVetements as $categorie)
+<main class="page-content">
+    @php
+    // Define category data with images and descriptions
+    $categoryData = [
+        [
+            'id' => 1,
+            'title' => 'Accessoires',
+            'copy' => 'Découvrez nos accessoires de qualité pour tous vos besoins',
+            'button' => 'Voir les produits',
+            'image_url' => 'martin-de-arriba-uf_IDewI6iQ-unsplash.jpg'
+        ],
+        [
+            'id' => 2,
+            'title' => 'Offres',
+            'copy' => 'Profitez de nos offres spéciales et promotions exclusives',
+            'button' => 'Découvrir',
+            'image_url' => 'khampha-phimmachak-QRVx6D5fbpE-unsplash.jpg'
+        ],
+        [
+            'id' => 3,
+            'title' => 'Bracelets',
+            'copy' => 'Explorez notre collection de bracelets élégants et modernes',
+            'button' => 'Voir la collection',
+            'image_url' => 'diego-castaneda-5LMam0Cn88k-unsplash.jpg'
+        ],[
+            'id' => 4,
+            'title' => 'Anneaux',
+            'copy' => 'Explorez notre collection d\'anneaux élégants et modernes',
+            'button' => 'Voir la collection',
+            'image_url' => 'jackie-tsang-3_YP8_mh-Kg-unsplash.jpg'
+        ]
+    ];
+    @endphp
+
+    @foreach($categoryData as $category)
+    <a href="/categorie/{{ $category['id'] }}" class="card" style="--bg-image: url('{{ $category['image_url'] }}')">
+        <div class="content">
+            <h2 class="title">{{ $category['title'] }}</h2>
+            <p class="copy">{{ $category['copy'] }}</p>
+            <span class="btn">{{ $category['button'] }}</span>
+        </div>
+    </a>
+    @endforeach
+</main>
+
+
+
 <div class="contact-content">
-    <div class="container">
-        <div class="item" style="margin:10px;width:50%">
-            <img src="icon-{{ $categorie['id'] }}.png" alt="" style="max-width: 52px;">
-            <h6>{{ $categorie['title'] }}
-            <br><span>Découvrez notre collection de {{ strtolower($categorie['title']) }}</span></h6>
-        </div> 
-    </div>
+<div class="container">
+
+<div class="item " style="margin:10px;width:50%">
+                <img src="necklace.png" alt="" style="max-width: 52px;">
+                <h6>accessoires
+
+                <br><span>Commander tous les accessoires disponibles</span></h6>
+                </div> </div></div>
+                <div class="properties section" style="margin:0;padding:0;" style="margin:0;padding:0;">
+                <div class="container"> <!-- Open container -->
+
+<div class="row"> <!-- Open row -->
+@foreach ($produits as $produit)
+@if($produit->categorie_id == 1)
+  <div class="col-lg-4 col-md-6"> <!-- Open column -->
+  
+    <div class="item"> <!-- Open item -->
+
+      <a href="/commander/{{$produit->id}}">
+      <img src="{{ asset('storage/'.$produit->image) }}" alt="Produit">
+
+
+
+      </a>
+
+      <span class="category">{{$produit->categorie->categorie}}</span>
+
+      <h6>{{$produit->prix}}dhs</h6>
+
+      <h4>
+        <a href="property-details.html">{{$produit->nom}}</a>
+      </h4>
+
+      <div class="main-button">
+        <a href="/comm/{{$produit->id}}">voir les informations</a>
+      </div> <!-- Close main-button -->
+   
+
+    </div> <!-- Close item --> 
+
+  </div> 
+  @endif
+  @endforeach
+  <!-- Close column -->
+
+</div> <!-- Close row -->
+
+</div> <!-- Close container -->
+</div> <!-- Close properties section -->
+<div class="contact-content">
+<div class="container">
+
+<div class="item " style="margin:10px;width:50%">
+                <img src="discount.png" alt="" style="max-width: 52px;">
+                <h6>offres
+                <br><span>Commander tous les offres
+                disponibles</span></h6>
+                </div> </div></div>
+
+
+                <div class="properties section" style="margin:0;padding:0;">
+                <div class="container"> <!-- Open container -->
+
+<div class="row"> <!-- Open row -->
+
+@foreach ($produits as $produit)
+@if($produit->categorie_id == 2)
+  <div class="col-lg-4 col-md-6"> <!-- Open column -->
+  
+    <div class="item"> <!-- Open item -->
+
+      <a href="/commander/{{$produit->id}}">
+      <img src="{{ asset('storage/'.$produit->image) }}" alt="Produit">
+
+
+
+      </a>
+
+      <span class="category">{{$produit->categorie->categorie}}</span>
+
+      <h6>{{$produit->prix}}dhs</h6>
+
+      <h4>
+        <a href="property-details.html">{{$produit->nom}}</a>
+      </h4>
+
+      <div class="main-button">
+        <a href="/comm/{{$produit->id}}">voir les informations</a>
+      </div> <!-- Close main-button -->
+   
+
+    </div> <!-- Close item --> 
+
+  </div> 
+  @endif
+  @endforeach
+
+</div> <!-- Close row -->
+
+</div> <!-- Close container -->
+</div><!-- Close properties section -->
+
+<div class="contact-content">
+<div class="container">
+
+<div class="item " style="margin:10px;width:50%">
+                <img src="bracelet.png" alt="" style="max-width: 52px;">
+                <h6>bracelets
+                <br><span>Commander tous les Bracelets
+                disponibles</span></h6>
+                </div> </div></div>
+
+
+                <div class="properties section" style="margin:0;padding:0;">
+                <div class="container"> <!-- Open container -->
+
+<div class="row"> <!-- Open row -->
+
+@foreach ($produits as $produit)
+@if($produit->categorie_id == 3)
+  <div class="col-lg-4 col-md-6"> <!-- Open column -->
+  
+    <div class="item"> <!-- Open item -->
+
+      <a href="/commander/{{$produit->id}}">
+      <img src="{{ asset('storage/'.$produit->image) }}" alt="Produit">
+
+
+
+      </a>
+
+      <span class="category">{{$produit->categorie->categorie}}</span>
+
+      <h6>{{$produit->prix}}dhs</h6>
+
+      <h4>
+        <a href="property-details.html">{{$produit->nom}}</a>
+      </h4>
+
+      <div class="main-button">
+        <a href="/comm/{{$produit->id}}">voir les informations</a>
+      </div> <!-- Close main-button -->
+   
+
+    </div> <!-- Close item --> 
+
+  </div> 
+  @endif
+  @endforeach
+
+</div> <!-- Close row -->
+
+</div> <!-- Close container -->
 </div>
 
-<div class="properties section" style="margin:0;padding:0;">
-    <div class="container">
-        <div class="row">
-            @foreach ($produits as $produit)
-            @if($produit->categorie_id == $categorie['id'])
-            <div class="col-lg-4 col-md-6">
-                <div class="item">
-                    <a href="/commander/{{$produit->id}}">
-                        <img src="{{ asset('storage/'.$produit->image) }}" alt="{{$produit->nom}}">
-                    </a>
-                    <span class="category">{{$produit->categorie->categorie}}</span>
-                    <h6>{{$produit->prix}} dhs</h6>
-                    <h4>
-                        <a href="property-details.html">{{$produit->nom}}</a>
-                    </h4>
-                    <div class="main-button">
-                        <a href="/comm/{{$produit->id}}">Voir les détails</a>
-                    </div>
-                </div>
-            </div>
-            @endif
-            @endforeach
-        </div>
-    </div>
+
+
+<div class="contact-content">
+<div class="container">
+
+<div class="item " style="margin:10px;width:50%">
+                <img src="ring.png" alt="" style="max-width: 52px;">
+                <h6>Anneaux
+                <br><span>Commander tous les Anneaux
+                disponibles</span></h6>
+                </div> </div></div>
+
+
+                <div class="properties section" style="margin:0;padding:0;">
+                <div class="container"> <!-- Open container -->
+
+<div class="row"> <!-- Open row -->
+
+@foreach ($produits as $produit)
+@if($produit->categorie_id == 4)
+  <div class="col-lg-4 col-md-6"> <!-- Open column -->
+  
+    <div class="item"> <!-- Open item -->
+
+      <a href="/commander/{{$produit->id}}">
+      <img src="{{ asset('storage/'.$produit->image) }}" alt="Produit">
+
+
+
+      </a>
+
+      <span class="category">{{$produit->categorie->categorie}}</span>
+
+      <h6>{{$produit->prix}}dhs</h6>
+
+      <h4>
+        <a href="property-details.html">{{$produit->nom}}</a>
+      </h4>
+
+      <div class="main-button">
+        <a href="/comm/{{$produit->id}}">voir les informations</a>
+      </div> <!-- Close main-button -->
+   
+
+    </div> <!-- Close item --> 
+
+  </div> 
+  @endif
+  @endforeach
+
+</div> <!-- Close row -->
+
+</div> <!-- Close container -->
 </div>
-@endforeach
+
+
+
+
+
 
 @endsection
