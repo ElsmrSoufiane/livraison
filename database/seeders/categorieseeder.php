@@ -13,14 +13,13 @@ class CategorieSeeder extends Seeder
      */
     public function run(): void
     {
-        $categories = [
-           
-            ['categorie' => 'Jabadors'],
-          
+         $categories = [
             ['categorie' => 'Accessoires'],
-           
+            ['categorie' => 'Offres'],
+            ['categorie' => 'Bracelets']
+            ,['categorie' => 'anneaux']
+            ,
         ];
-
         DB::table('categories')->insert($categories);
     }
 }
