@@ -394,7 +394,7 @@ Les meilleurs restaurants et pâtisseries de Fès
 </style>
 
 <div class="admin-nav">
-    <div class="nav-logo">shop</div>
+    <div class="nav-logo">RapidoClick</div>
     <div class="nav-user">
         
       <span><a class="btn" href="/produits">gestion des produits</a></span>
@@ -409,7 +409,7 @@ Les meilleurs restaurants et pâtisseries de Fès
     <aside class="sidebar">
         <ul class="sidebar-menu">
             <li class="menu-item " data-section="produits">
-                <i class="fas fa-box"></i>
+                
                 <span>Produits</span>
             </li>
             
@@ -445,182 +445,49 @@ Les meilleurs restaurants et pâtisseries de Fès
         @endif
 
         <!-- Section Statistiques -->
-     <section id="statistiques" class="card">
-    <div class="card-header">
-        <h2 class="card-title">Statistiques</h2>
-    </div>
-    
-    <div class="stats-grid">
-        <!-- Orders Card -->
-        <div class="stat-card">
+        <section id="statistiques" class="card" style="display: none;">
             <div class="card-header">
-                <i class="fas fa-shopping-bag icon-blue"></i>
-                <div class="stat-title">Commandes ce mois</div>
+                <h2 class="card-title">Statistiques</h2>
             </div>
-            <div class="stat-value">{{ $stats['commandes']['ce_mois'] }}</div>
-            <div class="stat-change {{ $stats['commandes']['evolution'] }}">
-                <div class="change-indicator">
-                    <i class="fas fa-arrow-{{ $stats['commandes']['evolution'] }}"></i>
-                    <span>{{ abs($stats['commandes']['pourcentage']) }}% vs mois dernier</span>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-title">Commandes ce mois</div>
+                    <div class="stat-value">142</div>
+                    <div class="stat-change up">
+                        <i class="fas fa-arrow-up"></i>
+                        <span>12% vs mois dernier</span>
+                    </div>
                 </div>
-                <div class="stat-trend">
-                    <i class="fas fa-chart-line trend-{{ $stats['commandes']['evolution'] }}"></i>
+                
+                <div class="stat-card">
+                    <div class="stat-title">Revenu total</div>
+                    <div class="stat-value">24,580 MAD</div>
+                    <div class="stat-change up">
+                        <i class="fas fa-arrow-up"></i>
+                        <span>8% vs mois dernier</span>
+                    </div>
                 </div>
-            </div>
-        </div>
-        
-        <!-- Revenue Card -->
-        <div class="stat-card">
-            <div class="card-header">
-                <i class="fas fa-wallet icon-green"></i>
-                <div class="stat-title">Revenu total</div>
-            </div>
-            <div class="stat-value">{{ number_format($stats['revenu']['ce_mois'], 0, ',', ' ') }} <span class="currency">MAD</span></div>
-            <div class="stat-change {{ $stats['revenu']['evolution'] }}">
-                <div class="change-indicator">
-                    <i class="fas fa-arrow-{{ $stats['revenu']['evolution'] }}"></i>
-                    <span>{{ abs($stats['revenu']['pourcentage']) }}% vs mois dernier</span>
+                
+                <div class="stat-card">
+                    <div class="stat-title">Nouveaux clients</div>
+                    <div class="stat-value">36</div>
+                    <div class="stat-change down">
+                        <i class="fas fa-arrow-down"></i>
+                        <span>5% vs mois dernier</span>
+                    </div>
                 </div>
-                <div class="stat-trend">
-                    <i class="fas fa-chart-bar trend-{{ $stats['revenu']['evolution'] }}"></i>
-                </div>
-            </div>
-        </div>
-        
-        <!-- New Customers Card -->
-        <div class="stat-card">
-            <div class="card-header">
-                <i class="fas fa-users icon-purple"></i>
-                <div class="stat-title">Nouveaux clients</div>
-            </div>
-            <div class="stat-value">{{ $stats['nouveaux_clients']['ce_mois'] }}</div>
-            <div class="stat-change {{ $stats['nouveaux_clients']['evolution'] }}">
-                <div class="change-indicator">
-                    <i class="fas fa-arrow-{{ $stats['nouveaux_clients']['evolution'] }}"></i>
-                    <span>{{ abs($stats['nouveaux_clients']['pourcentage']) }}% vs mois dernier</span>
-                </div>
-                <div class="stat-trend">
-                    <i class="fas fa-chart-line trend-{{ $stats['nouveaux_clients']['evolution'] }}"></i>
+                
+                <div class="stat-card">
+                    <div class="stat-title">Satisfaction</div>
+                    <div class="stat-value">94%</div>
+                    <div class="stat-change up">
+                        <i class="fas fa-arrow-up"></i>
+                        <span>2% vs mois dernier</span>
+                    </div>
                 </div>
             </div>
-        </div>
-        
-        <!-- Satisfaction Card (optionnel - si vous avez cette donnée) -->
-        <div class="stat-card">
-            <div class="card-header">
-                <i class="fas fa-smile icon-orange"></i>
-                <div class="stat-title">Satisfaction client</div>
-            </div>
-            <div class="stat-value">94<sup>%</sup></div>
-            <div class="stat-change up">
-                <div class="change-indicator">
-                    <i class="fas fa-arrow-up"></i>
-                    <span>2% vs mois dernier</span>
-                </div>
-                <div class="stat-trend">
-                    <i class="fas fa-chart-pie trend-up"></i>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<style>
-.stats-dashboard {
-    padding: 2rem;
-    font-family: 'Segoe UI', Roboto, sans-serif;
-}
-
-.stats-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 1.5rem;
-}
-
-.stat-card {
-    background: white;
-    border-radius: 12px;
-    padding: 1.5rem;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-    transition: transform 0.3s ease;
-    border-left: 4px solid;
-}
-
-.stat-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 16px rgba(0,0,0,0.12);
-}
-
-.card-header {
-    display: flex;
-    align-items: center;
-    margin-bottom: 1rem;
-}
-
-.card-header i {
-    font-size: 1.5rem;
-    margin-right: 12px;
-    padding: 10px;
-    border-radius: 8px;
-}
-
-.icon-blue { color: #3a86ff; background-color: #e6f0ff; }
-.icon-green { color: #4cc9a0; background-color: #e8faf3; }
-.icon-purple { color: #7b2cbf; background-color: #f3e8ff; }
-.icon-orange { color: #ff9e00; background-color: #fff4e0; }
-
-.stat-title {
-    font-size: 0.95rem;
-    color: #6b7280;
-    font-weight: 500;
-}
-
-.stat-value {
-    font-size: 2rem;
-    font-weight: 700;
-    color: #1f2937;
-    margin: 0.5rem 0;
-}
-
-.stat-value .currency {
-    font-size: 1rem;
-    color: #6b7280;
-}
-
-.stat-value sup {
-    font-size: 1.2rem;
-}
-
-.stat-change {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 1rem;
-    padding-top: 0.75rem;
-    border-top: 1px solid #f3f4f6;
-}
-
-.change-indicator {
-    display: flex;
-    align-items: center;
-    font-size: 0.85rem;
-}
-
-.change-indicator i {
-    margin-right: 6px;
-}
-
-.up { color: #10b981; }
-.down { color: #ef4444; }
-
-.stat-trend i {
-    font-size: 1.2rem;
-    opacity: 0.7;
-}
-
-.trend-up { color: #10b981; }
-.trend-down { color: #ef4444; }
-</style>
+        </section>
 
         <!-- Section Produits -->
         <section id="produits" class="card">
@@ -663,7 +530,10 @@ Les meilleurs restaurants et pâtisseries de Fès
         <section id="commandes" class="card" style="display: none;">
             <div class="card-header">
                 <h2 class="card-title">Commandes récentes</h2>
-               
+                <button class="btn btn-sm">
+                    <i class="fas fa-download"></i>
+                    Exporter
+                </button>
             </div>
             <div class="table-responsive">
                 <table class="table">
