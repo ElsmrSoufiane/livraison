@@ -8,7 +8,7 @@ use App\Http\Controllers\authentificationController;
 use App\Http\Controllers\commandecontroller;
 use App\Models\fournisseur;
 use App\Models\Commande;
-use App\Models\categorie;
+use App\Models\Categorie;
 use App\Models\Panier;
 use App\Models\Produit;
 use App\Models\Like;
