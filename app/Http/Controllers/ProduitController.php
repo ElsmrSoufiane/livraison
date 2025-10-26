@@ -21,7 +21,7 @@ class ImgBBService
     public function __construct()
     {
         $this->client = new Client();
-        $this->apiKey = env('IMGbb_API_KEY'); // Get free API key from https://api.imgbb.com/
+        $this->apiKey = "519684beb60cfe9835f521a1a222f304"; // Get free API key from https://api.imgbb.com/
     }
 
     /**
