@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Produit;
 use App\Models\Fournisseur;
 use App\Models\Categorie;
-use App\ImgBBService;
+use App\Models\ImgBBService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
