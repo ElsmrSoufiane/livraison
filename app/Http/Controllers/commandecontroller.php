@@ -6,7 +6,7 @@ use App\Models\Produit;
 use App\Models\Commande_personalise;
 use Illuminate\Http\Request;
 
-class commandecontroller extends Controller
+class commandecontroller extends Controller 
 {
     public function addquantite($id_commande)
     {
