@@ -1,11 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-    <title>@yield("title")</title>
+    <title>MM Création - Bijoux & Accessoires</title>
+<link rel="icon" href="https://jumpshare.com/s/B9XvJikKcB028yp3fLAs" type="image/x-icon">
+<link rel="shortcut icon" href="https://jumpshare.com/s/B9XvJikKcB028yp3fLAs" type="image/x-icon">
+<link rel="apple-touch-icon" href="https://jumpshare.com/s/B9XvJikKcB028yp3fLAs">
 
     <!-- Bootstrap core CSS -->
     <link href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
@@ -142,7 +145,7 @@
             
         <div class="text-center pt-3 border-top">
             <p class="mb-0">
-                © 2023 Livraison Fès. Tous droits réservés
+                © 2023 MM Création. Tous droits réservés
             </p>
         </div>
     </div>

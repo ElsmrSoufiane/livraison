@@ -223,7 +223,7 @@
                         <div class="row align-items-center">
                             <div class="col-12 col-md-2 mb-3 mb-md-0">
                             
-                                        <img src="{{ asset('storage/'.$commande->produit->image) }}" class="img-fluid rounded">
+                                        <img src="{{ $commande->produit->image }}" class="img-fluid rounded">
                                   
                             </div>
                             <div class="col-12 col-md-4 mb-3 mb-md-0">

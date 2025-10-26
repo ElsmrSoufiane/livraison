@@ -169,6 +169,33 @@
         transform: translateY(-8px);
         box-shadow: 0 15px 40px rgba(0,0,0,0.15);
     }
+     @media (max-width: 768px) {
+        .search-filter-container {
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .search-box {
+            margin-right: 0;
+        }
+        
+        .category-filter {
+            width: 100%;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .search-filter-container {
+            padding: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .search-box input,
+        .category-filter select {
+            padding: 0.625rem;
+            font-size: 0.9rem;
+        }
+    }
     
     .category-card:hover .category-img {
         transform: scale(1.1);
@@ -456,19 +483,17 @@
 
   <div class="col-lg-4 col-md-6"> <!-- Open column -->
   
-    <div class="item"> <!-- Open item -->
+   <div class="item"> <!-- Open item -->
 
       <a href="/commander/{{$produit->id}}">
-      <img src="{{ asset('storage/' . $produit->image) }}" alt="Produit">
+      <img src="{{ $produit->image }}" alt="Produit">
 
 
 
       </a>
-@foreach($fournisseurs as $fournisseur)
-@if($produit->fournisseur_id == $fournisseur->id)
-      <span class="category">{{$fournisseur->nom}}</span>
-      @endif
-@endforeach
+
+      <span class="category">{{$produit->categorie->categorie}}</span>
+
       <h6>{{$produit->prix}}dhs</h6>
 
       <h4>
@@ -476,9 +501,9 @@
       </h4>
 
       <div class="main-button">
-        <a href="/commander/{{$produit->id}}"><i class="fa fa-shopping-cart"></i></a>
+        <a href="/comm/{{$produit->id}}">voir les informations</a>
       </div> <!-- Close main-button -->
-      @include("review");
+   
 
     </div> <!-- Close item -->
 

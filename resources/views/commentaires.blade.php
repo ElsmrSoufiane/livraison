@@ -322,7 +322,7 @@
     <!-- Product Information Section -->
     <div class="product-card">
         <div class="product-image-container">
-            <img src="{{ asset('storage/'.$produit->image) }}" class="product-image" alt="{{ $produit->nom }}">
+            <img src="{{ $produit->image }}" class="product-image" alt="{{ $produit->nom }}">
         </div>
         <div class="product-details">
             <h1 class="product-title">{{ $produit->nom }}</h1>

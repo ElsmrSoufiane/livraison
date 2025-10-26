@@ -398,7 +398,6 @@ Les meilleurs restaurants et pâtisseries de Fès
     <div class="nav-user">
         
       <span><a class="btn" href="/produits">gestion des produits</a></span>
-      <span><a class="btn" href="/pointdeventes">gestion des fournisseur</a></span>
       <span><a class="btn" href="/livreurs">gestion des livreurs</a></span>
        
     </div>
@@ -530,10 +529,7 @@ Les meilleurs restaurants et pâtisseries de Fès
         <section id="commandes" class="card" style="display: none;">
             <div class="card-header">
                 <h2 class="card-title">Commandes récentes</h2>
-                <button class="btn btn-sm">
-                    <i class="fas fa-download"></i>
-                    Exporter
-                </button>
+               
             </div>
             <div class="table-responsive">
                 <table class="table">

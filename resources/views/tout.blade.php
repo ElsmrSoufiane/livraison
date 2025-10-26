@@ -31,7 +31,44 @@
         border-radius: 4px;
         font-size: 1rem;
     }
-    
+
+    /* Media Queries for Responsive Design */
+    @media (max-width: 768px) {
+        .search-filter-container {
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .search-box {
+            margin-right: 0;
+        }
+        
+        .category-filter {
+            width: 100%;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .search-filter-container {
+            padding: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .search-box input,
+        .category-filter select {
+            padding: 0.625rem;
+            font-size: 0.9rem;
+        }
+    }
+
+    /* Optional: Add focus states for better accessibility */
+    .search-box input:focus,
+    .category-filter select:focus {
+        outline: none;
+        border-color: #007bff;
+        box-shadow: 0 0 0 2px rgba(0,123,255,0.25);
+    }
+
     /* Category Cards Styles */
     :root {
         --d: 700ms;
@@ -391,7 +428,7 @@
     <div class="item"> <!-- Open item -->
 
       <a href="/commander/{{$produit->id}}">
-      <img src="{{ asset('storage/'.$produit->image) }}" alt="Produit">
+      <img src="{{ $produit->image }}" alt="Produit">
 
 
 
@@ -444,7 +481,7 @@
     <div class="item"> <!-- Open item -->
 
       <a href="/commander/{{$produit->id}}">
-      <img src="{{ asset('storage/'.$produit->image) }}" alt="Produit">
+      <img src="{{ $produit->image }}" alt="Produit">
 
 
 
@@ -497,7 +534,7 @@
     <div class="item"> <!-- Open item -->
 
       <a href="/commander/{{$produit->id}}">
-      <img src="{{ asset('storage/'.$produit->image) }}" alt="Produit">
+      <img src="{{ $produit->image }}" alt="Produit">
 
 
 
@@ -552,7 +589,7 @@
     <div class="item"> <!-- Open item -->
 
       <a href="/commander/{{$produit->id}}">
-      <img src="{{ asset('storage/'.$produit->image) }}" alt="Produit">
+      <img src="{{ $produit->image }}" alt="Produit">
 
 
 
