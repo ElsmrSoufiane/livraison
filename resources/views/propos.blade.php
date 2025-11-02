@@ -17,14 +17,14 @@
       <div class="row">
         <div class="col-lg-8">
           <div class="main-image">
-            <img src="shop.jpg" alt="Intérieur de notre boutique">
+            <img src="https://i.ibb.co/twc251yv/Whats-App-Image-2025-10-27-at-12-07-23-1.jpg" alt="Atelier M-CREATION - Création de bijoux artisanaux">
           </div>
           <div class="main-content">
-            <span class="category">Mode & Accessoires</span>
-            <h4>Créateurs d'Élégance Depuis 2010</h4>
-            <p>Bienvenue chez <strong>Boutique Élégance</strong>, votre destination privilégiée pour une mode raffinée et des accessoires uniques. Fondée en 2010 par deux passionnés de style, nous avons évolué d'une petite boutique à une adresse incontournable pour ceux qui recherchent qualité et originalité.
+            <span class="category">Bijoux Artisanaux & Pierres Naturelles</span>
+            <h4>Créateurs de Bijoux Uniques Depuis Nos Débuts</h4>
+            <p>Bienvenue chez <strong>M-CREATION</strong>, votre créateur de bijoux faits main en pierres naturelles. Fondée par des passionnés d'artisanat et de minéralogie, notre atelier s'est consacré à créer des pièces uniques qui subliment votre style personnel.
             
-            <br><br>Notre collection est soigneusement sélectionnée parmi des créateurs émergents et des marques établies. Chaque pièce dans notre boutique a été choisie pour son design, son savoir-faire artisanal et son caractère unique. Nous croyons en une mode responsable qui allie esthétique et éthique.</p>
+            <br><br>Chaque bijou est soigneusement conçu et réalisé à la main dans notre atelier, avec des pierres naturelles sélectionnées pour leur beauté et leur énergie unique. Nous croyons en une création responsable qui allie esthétique, authenticité et connexion avec la nature.</p>
           </div> 
           <div class="accordion" id="accordionExample">
             <div class="accordion-item">
@@ -35,31 +35,31 @@
               </h2>
               <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                 <div class="accordion-body">
-                  Chez <strong>Élégance</strong>, nous suivons trois principes fondamentaux : <code>qualité exceptionnelle</code>, <code>style intemporel</code> et <code>production éthique</code>. Nous travaillons directement avec des créateurs qui partagent nos valeurs de respect de l'environnement et des conditions de travail équitables.
+                  Chez <strong>M-CREATION</strong>, nous suivons trois principes fondamentaux : <code>création artisanale</code>, <code>pierres naturelles authentiques</code> et <code>pièces uniques</code>. Chaque bijou est conçu avec passion et réalisé main, garantissant son caractère exclusif et sa connexion avec les énergies naturelles des pierres.
                 </div>
               </div>
             </div>
             <div class="accordion-item">
               <h2 class="accordion-header" id="headingTwo">
                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                  Notre Équipe
+                  Notre Savoir-Faire Artisanal
                 </button>
               </h2>
               <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
                 <div class="accordion-body">
-                  Notre équipe de stylistes et conseillers en mode est là pour vous guider dans vos choix. Chaque membre partage une passion pour le style et un engagement à vous aider à trouver des pièces qui reflètent votre personnalité. Nous organisons régulièrement des formations pour rester à la pointe des tendances.
+                  Notre équipe d'artisans passionnés maîtrise les techniques traditionnelles de création de bijoux. Chaque pièce est travaillée avec soin, de la sélection des pierres naturelles à la finition, créant des bijoux qui racontent une histoire et portent une énergie unique.
                 </div>
               </div>
             </div>
             <div class="accordion-item">
               <h2 class="accordion-header" id="headingThree">
                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                  Engagement Local
+                  Engagement Qualité
                 </button>
               </h2>
               <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
                 <div class="accordion-body">
-                  Nous sommes fiers de soutenir les créateurs locaux. 30% de notre collection provient de designers français indépendants. Nous organisons également des événements mensuels pour mettre en lumière les talents émergents et reversons une partie de nos bénéfices à des œuvres caritatives locales.
+                  Nous nous engageons à utiliser exclusivement des pierres naturelles et des matériaux de qualité. Chaque bijou est créé spécialement pour vous, avec une attention particulière portée aux détails et à la symbolique des pierres choisies.
                 </div>
               </div>
             </div>
@@ -68,27 +68,50 @@
         <div class="col-lg-4">
           <div class="info-table">
             <ul>
-              <li>
-                <img src="customer-review.png" alt="" style="max-width: 52px;">
-                <h4>13+<br><span>Ans d'Expérience</span></h4>
-              </li>
-              
-              <li>
-                <img src="satisfaction.png" alt="" style="max-width: 52px;">
-                <h4>100%<br><span>Satisafaction</span></h4>
-              </li>
-              <li>
-                <img src="fast-delivery.png" alt="" style="max-width: 52px;">
-                <h4>Livraison<br><span>Offerte</span></h4>
-              </li>
-            </ul>
+  <li>
+    <i class="fas fa-hands" style="font-size: 32px; color: #d4af37;"></i>
+    <h4>100%<br><span>Fait Main</span></h4>
+  </li>
+  <li>
+    <i class="fas fa-mountain" style="font-size: 32px; color: #d4af37;"></i>
+    <h4>Pierres<br><span>Naturelles</span></h4>
+  </li>
+  <li>
+    <i class="fas fa-snowflake" style="font-size: 32px; color: #d4af37;"></i>
+    <h4>Pièces<br><span>Uniques</span></h4>
+  </li>
+  <li>
+    <i class="fas fa-smile" style="font-size: 32px; color: #d4af37;"></i>
+    <h4>100%<br><span>Satisfaction</span></h4>
+  </li>
+</ul>
+          </div>
+          <div class="contact-info">
+            <h4>Rejoignez Notre Univers</h4>
+            <div class="social-links">
+              <a href="#" class="social-link">Facebook</a>
+              <a href="https://instagram.com/m_mcreationn" class="social-link">Instagram</a>
+            </div>
+            <div class="contact-details">
+              <p><strong>Téléphone:</strong> +212 613-060259</p>
+              <p><strong>Email:</strong> contact@m-creation.com</p>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
 
-  
+  <div class="section">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="brand-message text-center">
+            <h3>"Des bijoux faits main en pierres naturelles, créés avec passion pour sublimer votre style unique."</h3>
+            <p class="signature">- M-CREATION</p>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 @endsection
