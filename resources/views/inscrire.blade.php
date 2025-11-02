@@ -79,7 +79,7 @@ Les meilleurs restaurants et pâtisseries de Fès
             <div class="col-lg-6 d-none d-lg-block animate__animated animate__fadeInRight">
                 <div class="d-flex flex-column h-100">
                     <div class="img-container flex-grow-1 rounded shadow overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" 
+                        <img src="https://i.ibb.co/twc251yv/Whats-App-Image-2025-10-27-at-12-07-23-1.jpg" 
                              alt="Nourriture marocaine" 
                              class="img-fluid h-100 w-100 object-fit-cover">
                         <div class="img-overlay"></div>
