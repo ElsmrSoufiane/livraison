@@ -62,7 +62,7 @@ les meilleurs restaurants et patisseries de fes
             
             <!-- Nouvelle colonne image -->
             <div class="col-lg-6 d-none d-lg-block text-center"> <!-- Visible seulement sur grands écrans -->
-                <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" 
+                <img src="https://i.ibb.co/twc251yv/Whats-App-Image-2025-10-27-at-12-07-23-1.jpg" 
                      alt="Ambiance restaurant" 
                      class="img-fluid rounded shadow" 
                      style="max-height: 400px;">
