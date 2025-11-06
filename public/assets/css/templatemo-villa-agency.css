@@ -120,12 +120,12 @@ body {
 }
 
 ::selection {
-  background: #4a90e2;
+  background: #e91e63;
   color: #fff;
 }
 
 ::-moz-selection {
-  background: #4a90e2;
+  background: #e91e63;
   color: #fff;
 }
 
@@ -147,7 +147,7 @@ body {
 
 .section-heading h2 em {
   font-style: normal;
-  color: #4a90e2;
+  color: #e91e63;
 }
 
 .section-heading h6 {
@@ -1824,4 +1824,49 @@ body {
   .contact-page .section-heading {
     margin-right: 100px;
   }
+}
+
+/* 
+---------------------------------------------
+Additional Rose Color Overrides
+--------------------------------------------- 
+*/
+
+/* Override any potential orange colors with rose */
+[style*="orange"], 
+.orange, 
+.btn-orange, 
+.bg-orange {
+  background-color: #e91e63 !important;
+}
+
+.text-orange, 
+a[style*="orange"] {
+  color: #e91e63 !important;
+}
+
+.border-orange {
+  border-color: #e91e63 !important;
+}
+
+/* Rose color variants for different shades */
+:root {
+  --primary-rose: #e91e63;
+  --dark-rose: #d81b60;
+  --light-rose: #ec407a;
+  --pale-rose: #f8e6ee;
+}
+
+/* Ensure all interactive elements use rose color */
+a:hover,
+button:hover {
+  color: #e91e63;
+}
+
+/* Form elements focus state */
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: #e91e63 !important;
+  box-shadow: 0 0 0 0.2rem rgba(233, 30, 99, 0.25) !important;
 }
