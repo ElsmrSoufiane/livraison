@@ -50,7 +50,7 @@ Route::get('/api/categories', function () {
     return response()->json($categories);
 });
 
-Route::get('/api/categories', function () {
+Route::get('/api/produits', function () {
     $products = Produit::with('categorie')->get();
     return response()->json($products);
 });
