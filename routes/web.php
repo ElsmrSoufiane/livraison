@@ -44,6 +44,17 @@ Route::post('/search', function (Request $request) {
 return redirect()->route('prds', ['search' => $search ]);
 
 });
+
+Route::get('/api/categories', function () {
+    $categories = Categorie::all();
+    return response()->json($categories);
+});
+
+Route::get('/api/categories', function () {
+    $products = Produit::with('categorie')->get();
+    return response()->json($products);
+});
+
 Route::get('/prds/{search}', function ($search) {
     $produits = Produit::where('nom', 'like', '%' . $search . '%')->get();
   
