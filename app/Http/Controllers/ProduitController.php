@@ -121,7 +121,7 @@ class ProduitController extends Controller
     public function update($id, Request $request)
 {
     // Debug: Check what data is being received
-    // dd($request->all());
+     dd($request->all());
     
    
 
