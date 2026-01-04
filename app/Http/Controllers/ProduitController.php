@@ -121,7 +121,7 @@ class ProduitController extends Controller
     public function update($id, Request $request)
 {
     // Debug: Check what data is being received
-     dd($request->all());
+     
     
    
 
@@ -144,9 +144,9 @@ class ProduitController extends Controller
 // $produit->update([...]);
 
 // Try:
-$produit->nom = $validated['nom_de_produit'];
-$produit->prix = $validated['prix'];
-$produit->categorie_id = $validated['categorie'];
+$produit->nom = $request['nom_de_produit'];
+$produit->prix = $request['prix'];
+$produit->categorie_id = $request['categorie'];
 $produit->image = $imageUrl;
 $produit->save();
 
