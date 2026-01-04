@@ -123,12 +123,7 @@ class ProduitController extends Controller
     // Debug: Check what data is being received
     // dd($request->all());
     
-    $validated = $request->validate([
-        'nom_de_produit' => 'required|string|max:255',
-        'prix' => 'required|numeric|min:0',
-        'categorie' => 'required|exists:categories,id',
-        'image' => 'nullable|image|max:2048',
-    ]);
+   
 
     $produit = Produit::findOrFail($id);
     $imageUrl = $produit->image;
