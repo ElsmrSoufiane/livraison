@@ -119,38 +119,41 @@ class ProduitController extends Controller
     }
 
     public function update($id, Request $request)
-    {
-        $validated = $request->validate([
-            'nom_de_produit' => 'required|string|max:255',
-            'prix' => 'required|numeric|min:0',
-            'categorie' => 'required|exists:categories,id',
-            'image' => 'nullable|image|max:2048',
-        ]);
+{
+    // Debug: Check what data is being received
+    // dd($request->all());
+    
+    $validated = $request->validate([
+        'nom_de_produit' => 'required|string|max:255',
+        'prix' => 'required|numeric|min:0',
+        'categorie' => 'required|exists:categories,id',
+        'image' => 'nullable|image|max:2048',
+    ]);
 
-        $produit = Produit::findOrFail($id);
-        $imageUrl = $produit->image;
+    $produit = Produit::findOrFail($id);
+    $imageUrl = $produit->image;
 
-        // Upload new image to ImgBB if present
-        if ($request->hasFile('image')) {
-            $uploadResult = $this->imgBBService->uploadImage($request->file('image'));
-            
-            if ($uploadResult['success']) {
-                $imageUrl = $uploadResult['url'];
-            } else {
-                return back()->with('error', 'Erreur lors du téléchargement de l\'image: ' . $uploadResult['error']);
-            }
+    // Upload new image to ImgBB if present
+    if ($request->hasFile('image')) {
+        $uploadResult = $this->imgBBService->uploadImage($request->file('image'));
+        
+        if ($uploadResult['success']) {
+            $imageUrl = $uploadResult['url'];
+        } else {
+            return back()->with('error', 'Erreur lors du téléchargement de l\'image: ' . $uploadResult['error']);
         }
-
-        // Update product
-        $produit->update([
-            'nom' => $validated['nom_de_produit'],
-            'prix' => $validated['prix'],
-            'categorie_id' => $validated['categorie'],
-            'image' => $imageUrl,
-        ]);
-
-        return redirect()->route('produits.index')->with('success', 'Produit mis à jour avec succès.');
     }
+
+    // Update the product
+    $produit->update([
+        'nom' => $validated['nom_de_produit'],
+        'prix' => $validated['prix'],
+        'categorie_id' => $validated['categorie'],
+        'image' => $imageUrl,
+    ]);
+
+    return redirect()->route('produits.index')->with('success', 'Produit mis à jour avec succès.');
+}
 
     public function delete($id)
     {
