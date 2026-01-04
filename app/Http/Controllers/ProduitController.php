@@ -145,12 +145,17 @@ class ProduitController extends Controller
     }
 
     // Update the product
-    $produit->update([
-        'nom' => $validated['nom_de_produit'],
-        'prix' => $validated['prix'],
-        'categorie_id' => $validated['categorie'],
-        'image' => $imageUrl,
-    ]);
+   // Instead of:
+// $produit->update([...]);
+
+// Try:
+$produit->nom = $validated['nom_de_produit'];
+$produit->prix = $validated['prix'];
+$produit->categorie_id = $validated['categorie'];
+$produit->image = $imageUrl;
+$produit->save();
+
+
 
     return redirect()->route('produits.index')->with('success', 'Produit mis à jour avec succès.');
 }
