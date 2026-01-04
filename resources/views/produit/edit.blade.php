@@ -220,7 +220,7 @@
     
 
 
-@extends("master")
+     @extends("master")
 @section("title")
 Les meilleurs restaurants et pâtisseries de Fès
 @endsection
@@ -247,33 +247,32 @@ Les meilleurs restaurants et pâtisseries de Fès
 
             <div class="input-group">
                 <label>Nom du produit</label>
-                <input type="text" name="nom_de_produit" value="{{$produit->nom}}" required>
-                @error('nom')
+                <input type="text" name="nom_de_produit" value="{{ old('nom_de_produit', $produit->nom) }}" required>
+                @error('nom_de_produit')
                     <div class="text-danger">{{ $message }}</div>
                 @enderror
             </div>
 
             <div class="input-group">
                 <label>Prix</label>
-                <input type="number" step="0.01" name="prix" value="{{$produit->prix}}" required>
+                <input type="number" step="0.01" name="prix" value="{{ old('prix', $produit->prix) }}" required>
                 @error('prix')
                     <div class="text-danger">{{ $message }}</div>
                 @enderror
             </div>
 
-           
-
             <div class="input-group">
                 <label>Catégorie</label>
-                <select name="categorie" value="{{$produit->categorie}}" required>
+                <select name="categorie" required>
                     <option value="">Choisir catégorie</option>
                     @foreach($categories as $categorie)
-                        <option value="{{ $categorie->id }}" {{ $categorie->id == old('categorie_id', $produit->categorie_id) ? 'selected' : '' }}>
+                        <option value="{{ $categorie->id }}" 
+                            {{ old('categorie', $produit->categorie_id) == $categorie->id ? 'selected' : '' }}>
                             {{ $categorie->categorie }}
                         </option>
                     @endforeach
                 </select>
-                @error('categorie_id')
+                @error('categorie')
                     <div class="text-danger">{{ $message }}</div>
                 @enderror
             </div>
@@ -283,20 +282,20 @@ Les meilleurs restaurants et pâtisseries de Fès
                 <input type="file" name="image" accept="image/*">
                 @if($produit->image)
                     <div class="mt-2">
-                        <img src="{{ asset('storage/' . $produit->image) }}" alt="Image actuelle" width="100">
+                        <img src="{{ $produit->image }}" alt="Image actuelle" width="100">
+                        <p class="text-muted">Image actuelle</p>
                     </div>
                 @endif
                 @error('image')
                     <div class="text-danger">{{ $message }}</div>
                 @enderror
             </div>
-<div>
-            <button type="submit" class="btn">Modifier Produit</button>
-            <a href="{{ route('produits.index') }}" class="btn" style="background: var(--primary)">Annuler</a>
+            
+            <div>
+                <button type="submit" class="btn">Modifier Produit</button>
+                <a href="{{ route('produits.index') }}" class="btn" style="background: var(--primary)">Annuler</a>
             </div>
-
         </form>
-
     </div>
 </div>
 @endsection
